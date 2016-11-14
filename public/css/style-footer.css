@@ -1,0 +1,8 @@
+
+input[type="checkbox"] {
+	margin: 5px 10px 0px 50px;
+}
+ul.nav-third-level > li, ul.nav-second-level > li{
+	background-color: #eeeeee;
+	color: #337ab7;
+}

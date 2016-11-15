@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+    	$('table').DataTable();
+
+
 	$("#link-historial").click(function(){
 		$(".historial").toggle();
 	});
@@ -82,5 +86,54 @@ $(document).ready(function(){
 
 		$("#modal-users").modal();
 	});
+
+	/*Cliente*/
+	//Ver informacion detallada de ticket
+	$(".btnVerMas").click(function(){
+		var titulo = $(this).closest("tr").data("titulo");
+		var descripcion = $(this).closest("tr").data("descripcion");
+		var estado = $(this).closest("tr").data("estado");
+		var sla = $(this).closest("tr").data("sla");
+		var cliente = $(this).closest("tr").data("cliente");
+		var responsable = $(this).closest("tr").data("responsable");
+		
+		$("#gridSystemModalLabel").html("Informacion detallada del ticket: " + titulo);
+		$("#infoTicket").empty();
+		$("#infoTicket").append("<span> Titulo: " + titulo + "</span><br />");	
+		$("#infoTicket").append("<span> Descripcion: " + descripcion + "</span><br />");
+		$("#infoTicket").append("<span> Cliente: " + cliente + "</span><br />");
+		$("#infoTicket").append("<span> Responsable: " + responsable + "</span><br />");
+
+		$(".typeSlaSpan").hide();
+
+		switch(sla){
+			case 1:
+				$("#slaBaja").show();
+				break;
+			case 2:
+				$("#slaMedia").show();
+				break;
+			case 3:
+				$("#slaAlta").show();
+				break;
+		}
+
+		$(".typeEstadoSpan").hide();
+
+		switch(estado){
+			case 1:
+				$("#ticketCreado").show();
+				break;
+			case 2:
+				$("#ticketAsignado").show();
+				break;
+			case 3:
+				$("#ticketFinalizado").show();
+				break;
+		}
+
+		$("#modal-ticket").modal();
+	});
+
 
 });

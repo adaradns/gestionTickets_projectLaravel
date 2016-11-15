@@ -1,100 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Gestion de tickets | Cliente</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <!--Hoja de estilo propio-->
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <!-- Custom CSS -->
-    <link href="../css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    
-    <!-- Footer checkbox style -->
-    <link href="../css/style-footer.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script><script src="../js/app.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-    <!--cliente-->
-    <div id="cliente">
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index-cliente.html">Cliente</a>
-            </div>
-
-            <ul class="nav navbar-top-links navbar-right">
-                
-                
-                <!-- Notificaciones -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i> 
-                        <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Nueva notificacion
-                                    <span class="pull-right text-muted small">hace 5 minutos</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                       
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Ver todas</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                <!-- Fin notificaciones -->
-                </li>
-                <!-- Usuario sesion -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i>Perfil de usuario</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a>
-                        </li>
-                    </ul>
-                <!-- Usuario sesion  -->
-                </li>
-                
-            </ul>
-            <!-- Fin navbar -->
-
+@include('layouts.app')
             <!-- Menu items-->
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -109,148 +13,156 @@
                             </span>
                             </div>
                         </li>
-                        <!--Listar tickets asignados-->
+                        <!--Listar usuarios-->
                         <li>
-                            <a href="index-cliente.html"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
+                            <a href="#"><i class="fa fa-ticket fa-fw"></i> Listar usuarios</a>
                         </li>
                         <!-- Crear ticket-->
                          <li>
-                            <a href="crearticket.html"><i class="fa fa-plus-square fa-fw"></i>Crear ticket</a>
+                            <a href="{{ route('cliente.ticket.create')}}"><i class="fa fa-plus-square fa-fw"></i>Crear ticket</a>
                         </li>
-                        <!--Desplegable tickets-->
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Filtro<span class="fa arrow"></span></a>
+                            <a href="sla.html"><i class="fa fa-ticket fa-fw"></i>SLA</a>
+                        </li>
+                        <!--Desplegable tipo de usuario-->
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>  Tipo de usuario<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Estado<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li><input type="checkbox">Creado</li>
-                                        <li><input type="checkbox">Asignado</li>
-                                        <li><input type="checkbox">Finalizado</li>
-                                        <li><input type="checkbox">Escalado</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Tipo de ticket<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li><input type="checkbox">Consulta</li>
-                                        <li><input type="checkbox">Problema</li>
-                                    </ul>
-                                </li>
+                                <li><input type="checkbox">Empleado</li>
+                                <li><input type="checkbox">Analista</li>
+                                <li><input type="checkbox">Cliente</li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
-        <!--/.Navigation -->
-        </nav>
-
         <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h4 class="page-header"><a href="index-cliente.html"> Listar tickets</a>/</h4>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            
             <div class="row">
                 <div class="col-lg-12">
                     
                     <!-- Panel principal -->
+                    <!-- Panel principal -->
                     <div class="panel panel-primary">
                         <div class="panel-heading ">
-                            <i class="fa fa-ticket fa-fw"></i>Tickets
+                            <i class="fa fa-user fa-fw"></i>Listado de usuarios
                         </div>
                         <div class="panel-body">
-                           
-                                      <table class="table table-bordered table-hover table-striped">
-                                            <thead>
+
+                            @include('flash::message')
+
+                                      <table class="table table-hover table-striped" id="myTable">
+                                            <thead class="thead-inverse">
                                                 <tr>
+                                                    <th class="hidden-xs">ID</th>
                                                     <th>Titulo</th>
                                                     <th>Estado</th>
                                                     <th>Prioridad</th>
-                                                    <th>Ver mas</th>
+                                                    <th class="th-ver-mas">Opciones</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>Lorem Ipsum</td>
-                                                    <td>Finalizado<i class=" fa fa-check-square fa-fw"></i></td>
-                                                    <td><p class="success">Bajo</p></td>
-                                                    <td><a href="descipcion.html"><button class="pull-right btn info"><i class="fa fa-eye" aria-hidden="true"></i></button></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lorem Ipsum</td>
-                                                    <td>Asignado</td>
-                                                    <td><p class="warning">Medio</p></td>
-                                                    <td><button class="pull-right btn info"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lorem Ipsum</td>
-                                                    <td>Asignado</td>
-                                                    <td ><p class="danger">Critico</p></td>
-                                                    <td><button class="pull-right btn info"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lorem Ipsum</td>
-                                                    <td>Finalizado <i class=" fa fa-check-square fa-fw"></i></td>
-                                                    <td ><p class="danger">Critico</p></td>
-                                                    <td><button class="pull-right btn info"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lorem Ipsum</td>
-                                                    <td>Asignado</td>
-                                                    <td ><p class="warning">Medio</p></td>
-                                                    <td><button class="pull-right btn info"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lorem Ipsum</td>
-                                                    <td>Finalizado <i class=" fa fa-check-square fa-fw"></i></td>
-                                                    <td><p class="success">Bajo</p></td>
-                                                    <td><button class="pull-right btn info"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Lorem Ipsum</td>
-                                                    <td>Finalizado <i class=" fa fa-check-square fa-fw"></i></td>
-                                                    <td ><p class="warning">Medio</p></td>
-                                                     <td><button class="pull-right btn info"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
-                                                </tr>
-                                           
+                                                @foreach($tickets as $ticket)
+                                                    <tr data-titulo="{{$ticket->titulo}}" data-descripcion="{{$ticket->descripcion}}" data-estado="{{$ticket->id_estado}}" 
+                                                    data-sla="{{$ticket->id_sla}}"
+                                                    data-cliente="{{$ticket->id_cliente}}"
+                                                    data-responsable="{{$ticket->id_responsable}}">
+                                                        <td class="hidden-xs">{{ $ticket->id }}</td>
+                                                        <td>{{ $ticket->titulo }}</td>
+                                                        <td> 
+                                                            @if($ticket->id_estado === 1)
+                                                                <p><span class="label label-default">Creado</span></p>
+                                                            @elseif($ticket->id_estado === 2)
+                                                                <p><span class="label label-default">Asignado</span></p>
+                                                            @elseif($ticket->id_estado === 3)
+                                                                <p><span class="label label-success">Finalizado</span></p>
+                                                            @endif
+                                                        </td>
+                                                        <td> 
+                                                            @if($ticket->id_sla === 1)
+                                                                <p><span class="label label-success">Baja</span></p>
+                                                            @elseif($ticket->id_sla === 2)
+                                                                <p><span class="label label-warning">Media</span></p>
+                                                            @elseif($ticket->id_sla === 3)
+                                                                <p><span class="label label-danger">Alta</span></p>
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            <!--Btn ver mas-->
+                                                            <a href="#" class="btn btn-primary link-color btnVerMas" ><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                                                            <!--Btn Editar-->
+                                                            <a href="{{route('cliente.ticket.show', $ticket->id)}}" class="btn btn-warning link-color hidden-xs " ><i class="fa fa-ticket" aria-hidden="true"></i> Panel de informacion</a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach                                           
                                             </tbody>
                                         </table>
                                     </div>
                                     <!-- Fin table -->
                                     <div class="text-center">
-                                        <ul class="pagination">
-                                            <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                                            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                                             <li><a href="#">2<span class="sr-only"></span></a></li>
-                                             <li><a href="#">3<span class="sr-only"></span></a></li>
-                                             <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                        </ul>
+
+                                        {!! $tickets->render() !!}
                                     </div>
+                                </div>
+                                <!-- /.col-lg-4 (nested) -->
+                                <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
                                 </div>
                                 <!-- /.col-lg-8 (nested) -->
                             </div>
                             <!-- /.row -->
                         </div>
                         <!-- /.panel-body -->
+                    </div>
+                </div>
+               
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
         </div>
+        <!-- /#page-wrapper -->
+
     </div>
+    <!-- /#wrapper -->
+    <!--MODAL VER INFO USUARIO-->
+    <div class="modal fade" id="modal-ticket" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                                <div class="col-md-6">
+                                    <div class="form-group" id="infoTicket">
+                                       <span class="cliente" id="nameCliente">$user->nombre</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">  
+                                    <div class="form-group">
+                                        <span>Nivel de prioridad:</span><br />
+                                        <span class="label label-success typeSlaSpan" id="slaBaja">Baja</span>
+                                        <span class="label label-warning typeSlaSpan" id="slaMedia">Media</span>
+                                        <span class="label label-danger typeSlaSpan" id="slaAlta">Alta</span> <br />
 
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../js/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../js/sb-admin-2.js"></script>
-
-</body>
-
-</html>
+                                        <span>Estado del ticket:</span><br />
+                                        <span class="label label-default typeEstadoSpan" id="ticketCreado">Creado</span>
+                                        <span class="label label-default typeEstadoSpan" id="ticketAsignado">Asignado</span>
+                                        <span class="label label-success typeEstadoSpan" id="ticketFinalizado">Finalizado</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                      
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+   
+    <!--/.MODAL VER INFO USUARIO-->

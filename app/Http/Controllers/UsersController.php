@@ -12,7 +12,7 @@ class UsersController extends Controller
     public function index()
     {
 
-    	$users = User::orderBy('id', 'ASC')->paginate(5);
+    	$users = User::orderBy('id', 'ASC')->paginate();
     	return view('admin.index-administrador')->with('users', $users);
     }
 
@@ -33,7 +33,7 @@ class UsersController extends Controller
 
     public function show($id)
     {
-
+        
     }
 
     public function edit($id)
@@ -53,5 +53,6 @@ class UsersController extends Controller
         $user->save();
 
         Flash::warning("El usuario" .$user->nombre. "se ha modificado correctamente");
+        return redirect()->route('admin.users.index');
     }
 }

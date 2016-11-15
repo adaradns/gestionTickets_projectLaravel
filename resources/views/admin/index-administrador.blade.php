@@ -90,10 +90,7 @@
                                         </table>
                                     </div>
                                     <!-- Fin table -->
-                                    <div class="text-center">
-
-                                        {!! $users->render() !!}
-                                    </div>
+                                   
                                 </div>
                                 <!-- /.col-lg-4 (nested) -->
                                 <div class="col-lg-8">

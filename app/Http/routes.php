@@ -31,9 +31,12 @@ Route::group(['middleware' => ['auth', 'administrador'], 'prefix' => 'admin' ] ,
 });
 
 Route::group(['middleware' => ['auth', 'cliente'], 'prefix' => 'cliente' ] , function(){
-	Route::get('/', function(){
+	
+	Route::resource('ticket', 'TicketController');
+	Route::get('/', 'TicketController@index');
+	/*Route::get('/', function(){
 		return view('cliente.index-cliente');
-	});
+	});*/
 });
 
 Route::group(['middleware' => ['auth', 'empleado'], 'prefix' => 'empleado' ] , function(){

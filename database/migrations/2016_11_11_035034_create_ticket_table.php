@@ -21,6 +21,7 @@ class CreateTicketTable extends Migration
             $table->integer('id_sla')->unsigned();
             $table->integer('id_estado')->unsigned();
             $table->string('descripcion');
+            $table->string('titulo');
             $table->string('nombre_archivo');
             $table->binary('archivo'); 
             $table->date('fecha_creacion');

@@ -23,7 +23,7 @@ class Ticket extends Model
 
 
     protected $fillable = [
-        'id', 'id_cliente','id_responsable', 'id_problema', 'id_sla', 'id_estado','descripcion', 'nombre_archivo', 'archivo' , 'fecha_creacion', 'fecha_vencimiento' , 'fecha_cierre',
+        'id', 'id_cliente','id_responsable', 'id_problema', 'id_sla', 'id_estado','titulo','descripcion', 'nombre_archivo', 'archivo' , 'fecha_creacion', 'fecha_vencimiento' , 'fecha_cierre',
     ];
 
     //Un ticket es creado unicamente por un usuario One To Many

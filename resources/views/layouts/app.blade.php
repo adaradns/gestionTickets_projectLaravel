@@ -12,6 +12,7 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
     <!-- Custom CSS -->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -92,7 +93,7 @@
     <!-- jQuery -->
 
     <script src="{{asset('js/jquery.js')}}"></script>
-
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
@@ -104,6 +105,8 @@
 
     <!--Script propio-->
     <script src="{{ asset('js/app.js') }}"></script>
+
+
 
     <!--Redireccionamiento
     <script src="{{asset('js/redireccion.js')}}"></script>-->

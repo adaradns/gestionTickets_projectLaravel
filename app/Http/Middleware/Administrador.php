@@ -22,6 +22,7 @@ class Administrador
     public function handle($request, Closure $next)
     {
         
+        
         switch ($this->auth->user()->id_tipo) {
             case '1':
                 #Administrador

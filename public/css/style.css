@@ -122,7 +122,7 @@ nav.navbar{
 
 
 /*MEDIA QUERYS*/
-@media (max-width: 450px) {
+@media (max-width: 320px) {
   table.table-striped {
     font-size: 12px;	
   }
@@ -136,4 +136,9 @@ nav.navbar{
 	background-color: #84de84;
 	color:#fff;
 	font-weight: bold;	
+}
+
+.dataTables_wrapper .dataTables_filter input{
+	border-radius: 5px;
+	border-color: #E7E7E7;
 }

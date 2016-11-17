@@ -15,7 +15,7 @@
                         </li>
                         <!--Listar usuarios-->
                         <li>
-                            <a href="#"><i class="fa fa-ticket fa-fw"></i> Listar usuarios</a>
+                            <a href="#"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
                         </li>
                         <!-- Crear ticket-->
                          <li>
@@ -41,16 +41,14 @@
                 <div class="col-lg-12">
                     
                     <!-- Panel principal -->
-                    <!-- Panel principal -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading ">
-                            <i class="fa fa-user fa-fw"></i>Listado de usuarios
-                        </div>
-                        <div class="panel-body">
+               
+                      <h3>Listado de tickets</h3> 
+                            <hr>
 
                             @include('flash::message')
+                                
 
-                                      <table class="table table-hover table-striped" id="myTable">
+                                    <table class="table table-hover table-striped" id="myTable">
                                             <thead class="thead-inverse">
                                                 <tr>
                                                     <th class="hidden-xs">ID</th>
@@ -60,68 +58,46 @@
                                                     <th class="th-ver-mas">Opciones</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                @foreach($tickets as $ticket)
-                                                    <tr data-titulo="{{$ticket->titulo}}" data-descripcion="{{$ticket->descripcion}}" data-estado="{{$ticket->id_estado}}" 
+                                        <tbody>
+                                        @foreach($tickets as $ticket)
+                                            <tr data-titulo="{{$ticket->titulo}}" data-estado="{{$ticket->id_estado}}" 
                                                     data-sla="{{$ticket->id_sla}}"
                                                     data-cliente="{{$ticket->id_cliente}}"
                                                     data-responsable="{{$ticket->id_responsable}}">
-                                                        <td class="hidden-xs">{{ $ticket->id }}</td>
-                                                        <td>{{ $ticket->titulo }}</td>
-                                                        <td> 
-                                                            @if($ticket->id_estado === 1)
+                                                    <td class="hidden-xs">{{ $ticket->id }}</td>
+                                                    <td>{{ $ticket->titulo }}</td>
+                                                    <td> 
+                                                        @if($ticket->id_estado === 1)
                                                                 <p><span class="label label-default">Creado</span></p>
-                                                            @elseif($ticket->id_estado === 2)
+                                                        @elseif($ticket->id_estado === 2)
                                                                 <p><span class="label label-default">Asignado</span></p>
-                                                            @elseif($ticket->id_estado === 3)
-                                                                <p><span class="label label-success">Finalizado</span></p>
-                                                            @endif
-                                                        </td>
-                                                        <td> 
-                                                            @if($ticket->id_sla === 1)
-                                                                <p><span class="label label-success">Baja</span></p>
-                                                            @elseif($ticket->id_sla === 2)
-                                                                <p><span class="label label-warning">Media</span></p>
-                                                            @elseif($ticket->id_sla === 3)
-                                                                <p><span class="label label-danger">Alta</span></p>
-                                                            @endif
-                                                        </td>
-                                                        <td>
+                                                        @elseif($ticket->id_estado === 3)
+                                                           <p><span class="label label-success">Finalizado</span></p>
+                                                        @endif
+                                                    </td>
+                                                    <td> 
+                                                        @if($ticket->id_sla === 1)
+                                                            <p><span class="label label-success">Baja</span></p>
+                                                        @elseif($ticket->id_sla === 2)
+                                                            <p><span class="label label-warning">Media</span></p>
+                                                        @elseif($ticket->id_sla === 3)
+                                                            <p><span class="label label-danger">Alta</span></p>
+                                                        @endif
+                                                    </td>
+                                                    <td>
                                                             <!--Btn ver mas-->
-                                                            <a href="#" class="btn btn-primary link-color btnVerMas" ><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                                                        <a href="#" class="btn btn-primary link-color btnVerMas" ><i class="fa fa-eye" aria-hidden="true"></i></a> 
                                                             <!--Btn Editar-->
-                                                            <a href="{{route('cliente.ticket.show', $ticket->id)}}" class="btn btn-warning link-color hidden-xs " ><i class="fa fa-ticket" aria-hidden="true"></i> Panel de informacion</a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach                                           
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- Fin table -->
-                                    <div class="text-center">
-
-                                        {!! $tickets->render() !!}
-                                    </div>
-                                </div>
-                                <!-- /.col-lg-4 (nested) -->
-                                <div class="col-lg-8">
-                                    <div id="morris-bar-chart"></div>
-                                </div>
-                                <!-- /.col-lg-8 (nested) -->
+                                                        <a href="{{route('cliente.ticket.show', $ticket->id)}}" class="btn btn-warning link-color hidden-xs " data-toggle="tooltip" title="Panel de informacion"><i class="fa fa-ticket" aria-hidden="true"></i> </a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach                                      
+                                    </tbody>
+                                </table>
                             </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
+                       </div>
                 </div>
-               
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
+            
     <!-- /#wrapper -->
     <!--MODAL VER INFO USUARIO-->
     <div class="modal fade" id="modal-ticket" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
@@ -137,7 +113,7 @@
                             <form>
                                 <div class="col-md-6">
                                     <div class="form-group" id="infoTicket">
-                                       <span class="cliente" id="nameCliente">$user->nombre</span>
+                                       <span class="cliente" id="nameCliente"></span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">  

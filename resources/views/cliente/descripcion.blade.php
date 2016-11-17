@@ -18,11 +18,11 @@
                         </li>
                         <!--Listar tickets-->
                         <li>
-                            <a href="index-cliente.html"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
+                            <a href="{{ route('cliente.ticket.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
                         </li>
                         <!-- Crear ticket-->
                          <li>
-                            <a href="crearticket.html"><i class="fa fa-plus-square fa-fw"></i>Crear ticket</a>
+                            <a href="{{ route('cliente.ticket.create')}}"><i class="fa fa-plus-square fa-fw"></i>Crear ticket</a>
                         </li>
                         <!--Desplegable tickets-->
                     </ul>
@@ -329,22 +329,7 @@
           </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
-    <!-- /.MODALS-->
-
-    <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../js/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../js/sb-admin-2.js"></script>
-
-    <!--Script propio-->
-    <script type="text/javascript" src="../js/app.js"></script>
+ 
 
 </body>
 

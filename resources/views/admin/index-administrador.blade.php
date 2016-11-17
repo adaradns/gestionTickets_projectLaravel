@@ -39,17 +39,13 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    
-                    <!-- Panel principal -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading ">
-                            <i class="fa fa-user fa-fw"></i>Listado de usuarios
-                        </div>
-                        <div class="panel-body">
+                        
+                        <h3>Listado de usuarios</h3>
+                        <hr>
 
                             @include('flash::message')
 
-                                      <table class="table table-hover table-striped">
+                                      <table class="table table-hover table-striped" id="tableAdmin" >
                                             <thead class="thead-inverse">
                                                 <tr>
                                                     <th class="hidden-xs">ID</th>
@@ -62,7 +58,9 @@
                                             </thead>
                                             <tbody>
                                                 @foreach($users as $user)
-                                                    <tr data-nombre="{{$user->nombre}}" data-apellido="{{$user->apellido}}" data-email="{{$user->email}}" data-nombreusuario="{{$user->nombre_usuario}}" data-tipousaurio="{{$user->id_tipo}}">
+                                                    <tr 
+                                                        data-nombre="{{$user->nombre}}" data-apellido="{{$user->apellido}}" data-email="{{$user->email}}" data-nombreusuario="{{$user->nombre_usuario}}" 
+                                                        data-tipousaurio="{{$user->id_tipo}}">
                                                         <td class="hidden-xs">{{ $user->id }}</td>
                                                         <td>{{ $user->nombre }}</td>
                                                         <td>{{ $user->apellido }}</td>
@@ -88,11 +86,8 @@
                                                 @endforeach                                           
                                             </tbody>
                                         </table>
-                                    </div>
                                     <!-- Fin table -->
-                                   
-                                </div>
-                                <!-- /.col-lg-4 (nested) -->
+                            
                                 <div class="col-lg-8">
                                     <div id="morris-bar-chart"></div>
                                 </div>

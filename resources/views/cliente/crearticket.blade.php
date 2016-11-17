@@ -16,7 +16,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="{{ route('admin.users.index') }}"><i class="fa fa-ticket fa-fw"></i> Listar usuarios</a>
+                            <a href="{{ route('admin.users.index') }}"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
                         </li>
                         <!-- Crear ticket-->
                          <li>
@@ -38,7 +38,7 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             <i class="fa fa-plus-square" aria-hidden="true"></i>
-                            Dar de alta usuario
+                            Crear ticket
                         </div>
                         <div class="panel-body">
                             <div class="row">

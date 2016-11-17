@@ -40,9 +40,10 @@ Route::group(['middleware' => ['auth', 'cliente'], 'prefix' => 'cliente' ] , fun
 });
 
 Route::group(['middleware' => ['auth', 'empleado'], 'prefix' => 'empleado' ] , function(){
-	Route::get('/', function(){
-		return view('empleado.index-empleado');
-	});
+
+	Route::resource('empleado', 'EmpleadoController');
+	Route::get('/', 'EmpleadoController@index');
+	
 });
 
 Route::group(['middleware' => ['auth', 'analista'], 'prefix' => 'analista' ] , function(){

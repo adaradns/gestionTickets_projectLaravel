@@ -1,3 +1,6 @@
+body#app-layout{
+    background-color: #f8f8f8; 
+}
 button.pull-right {
 	color:black;
 }
@@ -13,6 +16,10 @@ h1{
 
 ul.nav-second-level{
 	margin-left: 50px;
+}
+
+a#navBrand{
+  margin-left:-100px;
 }
 
 
@@ -46,7 +53,7 @@ td>p{
 }
 
 /*para que se vean todos los botones que se encuentran arriba del titulo del ticket*/
-div.panel-body > div > button > a{
+ div.buttons > button > a{
 	text-decoration: none;
 	color: #fff;
 
@@ -75,8 +82,19 @@ a.link-color{
 div.button{
 	text-align: center;
 }
+
+/*TABLA*/
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  background: #f2f2f2 !important;
+}
+
+
 tr.tituloUsuarios th{
 	text-align: center;
+}
+
+thead{
+  background: rgba(204, 204, 204, 0.36);
 }
 
 tbody > tr > td > input[type="checkbox"]{
@@ -116,13 +134,20 @@ nav.navbar{
 	margin-bottom: 0px;
 }
 
+
 .panel{
 	    margin-top: 2%;
 }
 
 
 /*MEDIA QUERYS*/
-@media (max-width: 320px) {
+@media (max-width: 520px) {
+  
+  a#navBrand{
+    margin-left:-15px;
+  }
+
+  
   table.table-striped {
     font-size: 12px;	
   }
@@ -130,15 +155,118 @@ nav.navbar{
   	padding:0px 0px;
 
   }
+
 }
 
 .panel-body > .alert-success{
-	background-color: #84de84;
-	color:#fff;
+	background-color: #BFF7BF;
+	color:#737373;
 	font-weight: bold;	
 }
 
 .dataTables_wrapper .dataTables_filter input{
 	border-radius: 5px;
 	border-color: #E7E7E7;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+	background: rgb(235, 239, 243);
+
+}
+
+select, textarea{
+	display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.dataTables_wrapper .dataTables_filter input{
+	display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.dataTables_length >label > select{
+  width: 100px;
+}
+.dataTables_length > label{
+  font-weight: normal;
+}
+
+.dataTables_filter > label{
+  font-weight: normal;
+  padding-bottom: 15%;
+}
+
+/*Botones personalizados*/
+.btn-grey { 
+  color: #FFFFFF; 
+  background-color: #2D8FB3; 
+  border-color: #69696B; 
+} 
+ 
+.btn-grey:hover, 
+.btn-grey:focus, 
+.btn-grey:active, 
+.btn-grey.active, 
+.open .dropdown-toggle.btn-grey { 
+  color: #FFFFFF; 
+  background-color: #387794; 
+  border-color: #69696B; 
+} 
+ 
+.btn-grey:active, 
+.btn-grey.active, 
+.open .dropdown-toggle.btn-grey { 
+  background-image: none; 
+} 
+ 
+.btn-grey.disabled, 
+.btn-grey[disabled], 
+fieldset[disabled] .btn-grey, 
+.btn-grey.disabled:hover, 
+.btn-grey[disabled]:hover, 
+fieldset[disabled] .btn-grey:hover, 
+.btn-grey.disabled:focus, 
+.btn-grey[disabled]:focus, 
+fieldset[disabled] .btn-grey:focus, 
+.btn-grey.disabled:active, 
+.btn-grey[disabled]:active, 
+fieldset[disabled] .btn-grey:active, 
+.btn-grey.disabled.active, 
+.btn-grey[disabled].active, 
+fieldset[disabled] .btn-grey.active { 
+  background-color: #2D8FB3; 
+  border-color: #69696B; 
+} 
+ 
+.btn-grey .badge { 
+  color: #2D8FB3; 
+  background-color: #FFFFFF; 
 }

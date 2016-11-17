@@ -17,7 +17,7 @@ class TicketController extends Controller
      public function index()
     {   
         $tickets = Ticket::orderBy('id', 'ASC')->paginate();
-    	return view('cliente.index-cliente')->with('tickets', $tickets);;
+    	return view('cliente.index-cliente')->with('tickets', $tickets);
     }
 
      public function create()

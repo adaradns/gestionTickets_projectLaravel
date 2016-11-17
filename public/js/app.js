@@ -1,6 +1,114 @@
 $(document).ready(function(){
 
-    	$('table').DataTable();
+		//Tabla de cliente
+    	$('#myTable').DataTable({
+
+    		"aoColumnDefs": [
+           		{ "bSortable": false, "aTargets": [ 4 ] }
+          	] ,
+            "aaSorting": [[ 0, "asc" ]],
+            "aoColumns": [null,null, null,null ,null],
+
+    		"oLanguage": {
+				"sProcessing":     "Procesando...",
+				"sLengthMenu":     "Mostrar registros _MENU_ ",
+				"sZeroRecords":    "No se encontraron resultados",
+				"sEmptyTable":     "Ningún dato disponible en esta tabla",
+				"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+				"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+				"sInfoPostFix":    "",
+				"sSearch":         "Buscar",
+				"sUrl":            "",
+				"sInfoThousands":  ",",
+				"sLoadingRecords": "Cargando...",
+				"oPaginate": {
+					"sFirst":    "Primero",
+					"sLast":     "Último",
+					"sNext":     "Siguiente",
+					"sPrevious": "Anterior"
+				},
+				"oAria": {
+					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+				}
+			}
+    	});
+
+
+    	//Tabla de empleado
+    	$('#tableTicketsAsignados').DataTable({
+
+    		"aoColumnDefs": [
+           		{ "bSortable": false, "aTargets": [ 4 ] }
+          	] ,
+            "aaSorting": [[ 0, "asc" ]],
+            "aoColumns": [null,null, null,null ,null],
+
+    		"oLanguage": {
+				"sProcessing":     "Procesando...",
+				"sLengthMenu":     "Mostrar registros_MENU_",
+				"sZeroRecords":    "No se encontraron resultados",
+				"sEmptyTable":     "Ningún dato disponible en esta tabla",
+				"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+				"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+				"sInfoPostFix":    "",
+				"sSearch":         "Buscar",
+				"sUrl":            "",
+				"sInfoThousands":  ",",
+				"sLoadingRecords": "Cargando...",
+				"oPaginate": {
+					"sFirst":    "Primero",
+					"sLast":     "Último",
+					"sNext":     "Siguiente",
+					"sPrevious": "Anterior"
+				},
+				"oAria": {
+					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+				}
+			}
+
+    	});
+
+    		//Tabla de administrador
+    	$('#tableAdmin').DataTable({
+
+    		"aoColumnDefs": [
+           		{ "bSortable": false, "aTargets": [ 5 ] }
+          	] ,
+            "aaSorting": [[ 0, "asc" ]],
+            "aoColumns": [null,null, null,null ,null, null],
+
+    		"oLanguage": {
+				"sProcessing":     "Procesando...",
+				"sLengthMenu":     "Mostrar registros_MENU_",
+				"sZeroRecords":    "No se encontraron resultados",
+				"sEmptyTable":     "Ningún dato disponible en esta tabla",
+				"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+				"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+				"sInfoPostFix":    "",
+				"sSearch":         "Buscar",
+				"sUrl":            "",
+				"sInfoThousands":  ",",
+				"sLoadingRecords": "Cargando...",
+				"oPaginate": {
+					"sFirst":    "Primero",
+					"sLast":     "Último",
+					"sNext":     "Siguiente",
+					"sPrevious": "Anterior"
+				},
+				"oAria": {
+					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+				}
+			}
+
+    	});
+
+    $('[data-toggle="tooltip"]').tooltip();
 
 
 	$("#link-historial").click(function(){
@@ -91,18 +199,22 @@ $(document).ready(function(){
 	//Ver informacion detallada de ticket
 	$(".btnVerMas").click(function(){
 		var titulo = $(this).closest("tr").data("titulo");
-		var descripcion = $(this).closest("tr").data("descripcion");
 		var estado = $(this).closest("tr").data("estado");
 		var sla = $(this).closest("tr").data("sla");
 		var cliente = $(this).closest("tr").data("cliente");
 		var responsable = $(this).closest("tr").data("responsable");
-		
+		var fechacreacion = $(this).closest("tr").data("fechacreacion");
+		var fechavencimiento = $(this).closest("tr").data("fechavencimiento");
+		var fechacierre = $(this).closest("tr").data("fechacierre");
+
 		$("#gridSystemModalLabel").html("Informacion detallada del ticket: " + titulo);
 		$("#infoTicket").empty();
-		$("#infoTicket").append("<span> Titulo: " + titulo + "</span><br />");	
-		$("#infoTicket").append("<span> Descripcion: " + descripcion + "</span><br />");
+		$("#infoTicket").append("<span> Titulo: " + titulo + "</span><br />");
 		$("#infoTicket").append("<span> Cliente: " + cliente + "</span><br />");
 		$("#infoTicket").append("<span> Responsable: " + responsable + "</span><br />");
+		$("#infoTicket").append("<span>Fecha de creacion: " + fechacreacion +"</span><br />");
+		$("#infoTicket").append("<span>Fecha de vencimiento: " + fechavencimiento +"</span><br />");
+		$("#infoTicket").append("<span>Fecha de cierre: " + fechacierre +"</span>");
 
 		$(".typeSlaSpan").hide();
 

@@ -12,7 +12,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/jquery.dataTables.min.css')}}">
+
     <!-- Custom CSS -->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
@@ -51,9 +52,10 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand title-nav" href="{{ url('/home') }}">
-                    HOSTING-AR S.R.L
-                </a>
+       
+                    <a class="navbar-brand title-nav" id="navBrand" href="{{ url('/home') }}">
+                        HOSTING-AR S.R.L
+                    </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -93,7 +95,6 @@
     <!-- jQuery -->
 
     <script src="{{asset('js/jquery.js')}}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 
@@ -105,6 +106,8 @@
 
     <!--Script propio-->
     <script src="{{ asset('js/app.js') }}"></script>
+    
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
 
 

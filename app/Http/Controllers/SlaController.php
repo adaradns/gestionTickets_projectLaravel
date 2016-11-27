@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class HistorialController extends Controller
+class SlaController extends Controller
 {
     public function index()
     {   
     	 
     }
 
-     public function create()
+    public function create()
     {
 
     }

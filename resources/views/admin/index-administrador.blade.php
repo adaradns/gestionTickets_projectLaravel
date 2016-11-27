@@ -3,17 +3,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Buscar">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                        </li>
-                        <!--Listar usuarios-->
+                       <!--Listar usuarios-->
                         <li>
                             <a href="#"><i class="fa fa-ticket fa-fw"></i> Listar usuarios</a>
                         </li>
@@ -22,16 +12,7 @@
                             <a href="{{ route('admin.users.create') }}"><i class="fa fa-plus-square fa-fw"></i>Crear usuario</a>
                         </li>
                         <li>
-                            <a href="sla.html"><i class="fa fa-ticket fa-fw"></i>SLA</a>
-                        </li>
-                        <!--Desplegable tipo de usuario-->
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>  Tipo de usuario<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><input type="checkbox">Empleado</li>
-                                <li><input type="checkbox">Analista</li>
-                                <li><input type="checkbox">Cliente</li>
-                            </ul>
+                            <a href="sla"><i class="fa fa-ticket fa-fw"></i>SLA</a>
                         </li>
                     </ul>
                 </div>
@@ -113,7 +94,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="gridSystemModalLabel"></h4>
+                    <h4 class="modal-title" id="modalUsers"></h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">

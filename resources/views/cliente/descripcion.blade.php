@@ -1,6 +1,5 @@
 @include('layouts.app')
 
-<body>
 
             <!-- Menu items-->
             <div class="navbar-default sidebar" role="navigation">
@@ -328,9 +327,3 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
- 
-
-</body>
-
-</html>

@@ -72,7 +72,43 @@ $(document).ready(function(){
 
     	});
 
-    		//Tabla de administrador
+    	//Empleado tickets creados tabla
+    	$('#tableTicketsCreados').DataTable({
+
+    		"aoColumnDefs": [
+           		{ "bSortable": false, "aTargets": [ 4 ] }
+          	] ,
+            "aaSorting": [[ 0, "asc" ]],
+            "aoColumns": [null,null, null,null ,null],
+
+    		"oLanguage": {
+				"sProcessing":     "Procesando...",
+				"sLengthMenu":     "Mostrar registros_MENU_",
+				"sZeroRecords":    "No se encontraron resultados",
+				"sEmptyTable":     "Ningún dato disponible en esta tabla",
+				"sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+				"sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+				"sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+				"sInfoPostFix":    "",
+				"sSearch":         "Buscar",
+				"sUrl":            "",
+				"sInfoThousands":  ",",
+				"sLoadingRecords": "Cargando...",
+				"oPaginate": {
+					"sFirst":    "Primero",
+					"sLast":     "Último",
+					"sNext":     "Siguiente",
+					"sPrevious": "Anterior"
+				},
+				"oAria": {
+					"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+					"sSortDescending": ": Activar para ordenar la columna de manera descendente"
+				}
+			}
+
+    	});
+    	
+    	//Tabla de administrador
     	$('#tableAdmin').DataTable({
 
     		"aoColumnDefs": [
@@ -121,14 +157,14 @@ $(document).ready(function(){
 	$(".radio-inline").click(function(){
 		$("#btnEnviar").show();
 	});
-	//empleado de primera y segunda linea finalizar ticket descripcion.html
+	/*empleado de primera y segunda linea finalizar ticket descripcion.html
 	$("#finalizarTicket").click(function(){
 		$("#modal-finalizarTicket").modal();
-	});
+	});*/
 	//empleado de primera y segunda linea autoasignar descripcion.html
-	$("#auto-asignar").click(function(){
+	/*$("#auto-asignar").click(function(){
 		$("#modal-ticketAsignado").modal();
-	});
+	});*/
 	//redirigir ticket empleado de 1° y 2° linea descripcion.html
 	$("#redirigirTicket").click(function(){
 		$("#modal-redirigirTicket").modal();
@@ -168,7 +204,7 @@ $(document).ready(function(){
 		var nombreUsuario = $(this).closest("tr").data("nombreusuario");
 		var tipoUsuario = $(this).closest("tr").data("tipousaurio");
 		
-		$("#gridSystemModalLabel").html("Informacion detallada del usuario: " + nombre);
+		$("#modalUsers").html("Informacion detallada del usuario: " + nombre);
 		$("#infoUser").empty();
 		$("#infoUser").append("<span> Nombre: " + nombre + "</span><br />");	
 		$("#infoUser").append("<span> Apellido: " + apellido + "</span><br />");
@@ -207,7 +243,7 @@ $(document).ready(function(){
 		var fechavencimiento = $(this).closest("tr").data("fechavencimiento");
 		var fechacierre = $(this).closest("tr").data("fechacierre");
 
-		$("#gridSystemModalLabel").html("Informacion detallada del ticket: " + titulo);
+		$("#modalTicket").html("Informacion detallada del ticket: " + titulo);
 		$("#infoTicket").empty();
 		$("#infoTicket").append("<span> Titulo: " + titulo + "</span><br />");
 		$("#infoTicket").append("<span> Cliente: " + cliente + "</span><br />");
@@ -245,6 +281,39 @@ $(document).ready(function(){
 		}
 
 		$("#modal-ticket").modal();
+	});
+
+	$("#finalizarTicket").click(function(){
+
+		var idTicket = $("#idTicket").val();
+		debugger;
+		var url = window.location.protocol + '//' + window.location.host+"/empleado/finalizar/" + idTicket;
+		$.ajax({
+            type: "GET",
+            url: url,
+            success: function(response) {
+            	debugger;
+               $("#modal-finalizarTicket").modal();
+                	
+            }
+		});
+	});	
+
+		$("#autoasignar").click(function(){
+
+		var idTicket = $("#idTicket").val();
+		debugger;
+		var url = window.location.protocol + '//' + window.location.host+"/empleado/autoasignar/" + idTicket;
+		$.ajax({
+            type: "GET",
+            url: url,
+            success: function(response) {
+            	debugger;
+               $("#modal-ticketAsignado").modal();
+                	
+            }
+		});	
+
 	});
 
 

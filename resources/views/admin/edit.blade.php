@@ -56,8 +56,8 @@
                                             {!! Form::text('apellido', $user->apellido , ['class' => 'form-control', 'placeholder' => 'Ingrese apellido', 'required'])!!}
                                         </div>
                                         <div class="form-group">
-                                            {!! Form::label('nombreUsuario', 'Nombre de usuario') !!}
-                                            {!! Form::text('nombreUsuario', $user->nombre_usuario, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de usuario', 'required'])!!}
+                                            {!! Form::label('nombre_usuario', 'Nombre de usuario') !!}
+                                            {!! Form::text('nombre_usuario', $user->nombre_usuario, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de usuario', 'required'])!!}
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('id_tipo', 'Tipo de empleado') !!}

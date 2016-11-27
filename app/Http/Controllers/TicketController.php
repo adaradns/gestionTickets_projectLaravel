@@ -20,7 +20,8 @@ class TicketController extends Controller
     	return view('cliente.index-cliente')->with('tickets', $tickets);
     }
 
-     public function create()
+
+    public function create()
     {
         return view('cliente.crearticket');
     }
@@ -34,6 +35,8 @@ class TicketController extends Controller
         $ticket->id_estado = 1;
 
 
+        $sla = new Sla();
+
         //Manipulacion de iamgenes
         $file = $request->file('archivo');
           
@@ -44,7 +47,27 @@ class TicketController extends Controller
         return redirect()->route('cliente.ticket.index');
     }
 
-     public function show($id)
+    public function finalizarTicket($id)
+    {
+        $ticket = Ticket::find($id);
+        $ticket->id_estado = 3;
+        $ticket->save();
+        return response()->json([
+            'ticket' => $ticket
+        ]);
+    }
+
+    public function autoasignarTicket($id)
+    {
+        $ticket = Ticket::find($id);
+        $ticket->id_estado = 2;
+        $ticket->save();
+        return response()->json([
+            'ticket' => $ticket
+        ]);
+    }
+
+    public function show($id)
     {
         $ticket = Ticket::find($id);
         return view('cliente.descripcion')->with('ticket', $ticket);

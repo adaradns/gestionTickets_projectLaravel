@@ -63,7 +63,6 @@ class Ticket extends Model
         return $this->belongsTo('App\Sla');
     }
 
-    //One To One
     public function tipo_problema()
     {
         return $this->hasOne('App\Tipo_Problema');

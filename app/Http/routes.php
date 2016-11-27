@@ -43,6 +43,10 @@ Route::group(['middleware' => ['auth', 'empleado'], 'prefix' => 'empleado' ] , f
 
 	Route::resource('empleado', 'EmpleadoController');
 	Route::get('/', 'EmpleadoController@index');
+	Route::get('/indexCreado', 'EmpleadoController@indexCreado');
+	Route::get('/descripcionAutoasignar/{id}', 'EmpleadoController@descripcionAutoasignar');
+	Route::get('/autoasignar/{id}', 'TicketController@autoasignarTicket');
+	Route::get('/finalizar/{id}', 'TicketController@finalizarTicket');
 	
 });
 
@@ -57,4 +61,11 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 });
-	
+
+Route::get('enviar', 'UsersController@sendEmailReminder');
+
+Route::group(['prefix' => 'encuesta'], function(){
+
+	Route::resource('encuestas', 'EncuestaController');
+
+});

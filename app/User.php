@@ -22,7 +22,7 @@ class User extends Authenticatable
 
 
 
-    protected $fillable = ['id_tipo',
+    protected $fillable = ['id','id_tipo',
         'nombre', 'apellido', 'nombre_usuario' , 'email', 'habilitado' , 'password', 'fecha_creacion', 'remember_token',
     ];
 
@@ -43,7 +43,7 @@ class User extends Authenticatable
     }
 
     //Un uusario puede crear muchos tickets
-    public function tickets()
+    public function ticket()
     {
         return $this->hasMany('App\Ticket');
     }

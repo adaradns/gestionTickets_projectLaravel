@@ -22,6 +22,10 @@ a#navBrand{
   margin-left:-100px;
 }
 
+ul#navRight{
+  margin-right:-102px; 
+}
+
 
 .bg-panel-warning{
 	background-color: #F1A900;

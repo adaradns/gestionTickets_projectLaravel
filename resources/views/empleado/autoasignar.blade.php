@@ -1,42 +1,35 @@
 @include('layouts.app')
-    <div id="wrapper">
-
-       <!-- Menu items-->
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        
-                        <!--Listar tickets-->
-                        <li>
-                            <a href="{{route('empleado.empleado.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets asignados</a>
-                        </li>
-                        <!--Ingresar a la bandeja de entrada del empleado de primera linea-->
-                        <li>
-                            <a href="{{url('empleado/indexCreado')}}"><i class="fa fa-list-ul fa-fw"></i> bandeja de entrada</a>
-                        </li>
-                        <!--Desplegable tickets-->
-                    </ul>
-                </div>
+        <!-- Menu items-->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <!--Listar tickets asignados-->
+                    <li>
+                        <a href="{{route('empleado.empleado.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets asignados</a>
+                    </li>
+                    <!--Ingresar a la bandeja de entrada del empleado de primera linea-->
+                    <li>
+                        <a href="{{url('empleado/indexCreado')}}"><i class="fa fa-list-ul fa-fw"></i> bandeja de entrada</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-
+        </div>
         <div id="page-wrapper">
-   
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-8">
                     
                     <!-- Panel principal -->
-                      
-                            <h3>Ticket asignado</h3>
-                            <hr>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading ">
+                            <i class="fa fa-ticket fa-fw"></i>Ticket
+                        </div>
+                        <div class="panel-body">
                             <input type="hidden" name="" value="{{$ticket->id}}" id="idTicket">
                             <div class="buttons">
                                 <button class="btn btn-grey"><a id="link-historial" href="#">Ver historial</a></button>
-                                <button class="btn btn-grey"><a id="redirigirTicket" href="#">Redirigir ticket</a></button>
-                                <button class="btn btn-grey"><a id="finalizarTicket" href="#">Finalizar ticket</a></button>
-                                <button class="btn btn-grey"><a id="encuestaDeSastifaccion" href="#">Ver resultado de encuesta de sastifaccion</a></button>
+                                <button class="btn btn-grey"><a  id="autoasignar" href="#">Auto-asignar</a></button>
                             </div>
-                            <div style="display: none;" class="historial">
+                           <div style="display: none;" class="historial">
                                   <table class="table table-bordered table-hover table-striped">
                                             <thead >
                                                 <tr>
@@ -48,7 +41,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td>11/04/2016</td>
-                                                    <td>Cambio de estado: Finalizado</td>
+                                                    <td>Redirijido a bandeja de entrada</td>
                                                     <td>Lala</td>
                                                 </tr>  
                                                 <tr>
@@ -83,8 +76,8 @@
                             <hr>
                             <div class="content">
                                 <article>
-                                    <h2>Titulo del ticket: {{$ticket->titulo}}</h2>
-                                    <p class="descripcion">Descripcion: <br>{{$ticket->descripcion}}</p>
+                                    <h2>Titulo</h2>
+                                    <p class="descripcion">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
                                 </article>
                                 <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
@@ -202,9 +195,52 @@
                         </div>
                         <!-- /.panel-footer -->
                     </div>
-                            
+                            </div>          
+                        </div>      
+                    </div>
                 </div>
-     
+            <!-- /.panel-body -->
+                <div class="col-lg-4">
+                    
+                    <!-- Panel principal -->
+                    <div class="panel panel-primary">
+                        <div class="panel-heading ">
+                            <i class="fa fa-ticket fa-fw"></i>Ticket - Detalles
+                        </div>
+                        <div class="panel-body">
+                            <div class="content-details">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p><b>ID:</b> 788978</p>
+                                    </div>    
+                                    <div class="col-xs-12">
+                                        <p><b>Prioridad:</b> Baja</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p><b>Estado: </b>Creado</p>    
+                                    </div>    
+                                    <div class="col-xs-12">
+                                        <p><b>Fecha de creacion:</b> 20/03/16</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p><b>Fecha de vencimiento: </b> 25/03/16</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p><b>Fecha de cierre: </b> </p>
+                                        
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p><b>Cliente: </b>Jorgee</p>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <p><b>Empleado asignado: </b> cacho</p>
+                                    </div>                
+                            </div>          
+                        </div>      
+                    </div>
+                </div>
+                            <!-- /.row -->
+            </div>
                 
         </div>
         <!-- /#page-wrapper -->
@@ -213,147 +249,29 @@
     </div>
     <!-- /#wrapper -->
 
-    <!--MODALS Finalizar ticket-->
-    <div class="modal fade" id="modal-finalizarTicket" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <!--MODALS-->
+    <div class="modal fade" id="modal-ticketAsignado" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title" id="gridSystemModalLabel">Ticket finalizado</h4>
+                <h4 class="modal-title" id="gridSystemModalLabel">Auto-asignacion de ticket</h4>
               </div>
               <div class="modal-body">
                    <form>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="">Se ha cerrado el ticket</label>
+                                    Se ha redirijido el ticket a su lista de tickets asignados
                                 </div>
                             </div>
                         </div>
 
                     <div class="modal-footer">
-                        <input type="submit" value="Ok" name="Ok" id="btnOk" class="btn btn-primary"/>
+                        <input type="submit" value="ok" name="btnAceptar" id="btnAceptar" class="btn btn-primary" />
                     </div>      
                    </form> 
               </div>
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <!--MODALS Redirigir ticket main-->
-    <div class="modal fade" id="modal-redirigirTicket" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="gridSystemModalLabel">Redirigiendo ticket</h4>
-              </div>
-              <div class="modal-body">
-                   <form>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="">¿A donde desea redirigir el ticket?</label>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="modal-footer">
-                        <button class="btn btn-primary btn-lg btn-block" id="empleadoEspecifico">A un empleado especifico</button>
-                        <button class="btn btn-primary btn-lg btn-block" id="bandejaDeEntrada">A otra bandeja de entrada</button>
-                    </div>      
-                   </form> 
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <!--MODAL LISTA DE EMPLEADOS-->
-    <div class="modal fade" id="modal-listaDeEmpleados" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="gridSystemModalLabel">Encuesta de sactifaccion</h4>
-              </div>
-              <div class="modal-body">
-                   <form>
-                        <div class="container">
-                            <div class="row">
-                                    <label for="">¿A quien desea redirigir el ticket?</label>
-                            </div>
-                        </div>
-
-                    <div class="modal-footer row">
-                        <div class="list-group">
-                          <a href="#" class="list-group-item">Empleado 1</a>
-                          <a href="#" class="list-group-item">Empleado 2</a>
-                          <a href="#" class="list-group-item">Empleado 3</a>
-                          <a href="#" class="list-group-item">Empleado 4</a>
-                          <a href="#" class="list-group-item">Empleado 5</a>
-                        </div>
-                    </div>      
-                   </form> 
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <!--MODAL A OTRA BANDEJA DE ENTRADA-->
-    <div class="modal fade" id="modal-bandejaDeEntrada" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="gridSystemModalLabel">Encuesta de sactifaccion</h4>
-              </div>
-              <div class="modal-body">
-                   <form>
-                        <div class="container">
-                            <div class="row">
-                                    <label for="">Se ha redirijido a otra badeja de entrada</label>
-                            </div>
-                        </div>
-
-                    <div class="modal-footer">
-                        <button type="button" id="okBandejaDeEntrada" class="btn btn-primary pull-right">Ok</button>
-                    </div>      
-                   </form> 
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-
-    <!--MODAL DE ENCUESTA DE SASTIFACCION-->
-    <div class="modal fade" id="modal-resultadoEncuesta" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title" id="gridSystemModalLabel">Resultado de la encuesta de sactifaccion</h4>
-              </div>
-              <div class="modal-body">
-                   <form>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="respuesta1">¿Le sirvió la respuesta?</label>
-                                    <p id="respuesta1">Si</p>
-                                </div>
-                                <div class="col-md-12" style="display: inline">
-                                    <label for="respuesta2">¿Como calificaria al empleado?
-                                        <p id="respuesta2">5</p>
-                                   </label>
-                                </div>
-                                <div class="col-md-12" style="display: inline">
-                                    <label for="respuesta3">¿Como calificaria su respuesta?
-                                        <p id="respuesta3">7</p>
-                                   </label>
-                                </div>
-                            </div>
-                        </div>
-
-                    <div class="modal-footer">
-                        <input type="submit" value="Enviar" name="enviar" id="btnEnviar" class="btn btn-primary" style="display: none;" />
-                    </div>      
-                   </form> 
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!-- /.MODALS-->
 

@@ -53,7 +53,7 @@
                                     <button type="submit" class="btn btn-success btn-block">
                                         <i class="fa fa-sign-in" aria-hidden="true"> </i> Iniciar Sesion
                                     </button>
-                              <!--  <a class="btn btn-link" href="{{ url('/password/reset') }}">Ha olvidado su contraseña?</a>-->
+                         <!--  <a class="btn btn-link" href="{{ url('/password/reset') }}">Ha olvidado su contraseña?</a>-->
                             </div>
                         </div>
                     </form>

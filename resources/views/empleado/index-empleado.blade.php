@@ -5,17 +5,16 @@
                     <ul class="nav" id="side-menu">
                         <!--Listar tickets asignados-->
                         <li>
-                            <a href="#"><i class="fa fa-ticket fa-fw"></i> Listar tickets asignados</a>
+                            <a href="{{route('empleado.empleado.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets asignados</a>
                         </li>
                         <!--Ingresar a la bandeja de entrada del empleado de primera linea-->
                         <li>
-                            <a href="#"><i class="fa fa-list-ul fa-fw"></i> bandeja de entrada</a>
+                            <a href="{{url('empleado/indexCreado')}}"><i class="fa fa-list-ul fa-fw"></i> bandeja de entrada</a>
                         </li>
                     </ul>
                 </div>
             </div>
-        <!--/.Navigation -->
-        </nav>
+
 
         <div id="page-wrapper">
             <div class="row">
@@ -48,7 +47,7 @@
                                     @if($ticket->id_estado === 1)
                                         <p><span class="label label-default">Creado</span></p>
                                     @elseif($ticket->id_estado === 2)
-                                        <p><span class="label label-default">Asignado</span></p>
+                                        <p><span class="label label-primary">Asignado</span></p>
                                     @elseif($ticket->id_estado === 3)
                                         <p><span class="label label-success">Finalizado</span></p>
                                     @endif
@@ -64,7 +63,7 @@
                                 </td>
                                <td>
                                     <!--Btn ver mas-->
-                                    <a href="#" class="btn btn-primary link-color btnVerMas" ><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                                    <a href="#" class="btn btn-primary link-color btnVerMas" ><i class="fa fa-eye" aria-hidden="true" data-toggle="tooltip" title="Ver mas informacion" ></i></a> 
                                     <!--Btn Editar-->
                                     <a href="{{route('empleado.empleado.show', $ticket->id)}}" class="btn btn-warning link-color hidden-xs " data-toggle="tooltip" title="Panel de informacion"><i class="fa fa-ticket" aria-hidden="true"></i> </a>
                                 </td>
@@ -83,7 +82,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="gridSystemModalLabel"></h4>
+                    <h4 class="modal-title" id="modalTicket"></h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -104,7 +103,7 @@
 
                                         <span>Estado del ticket:</span><br />
                                         <span class="label label-default typeEstadoSpan" id="ticketCreado">Creado</span>
-                                        <span class="label label-default typeEstadoSpan" id="ticketAsignado">Asignado</span>
+                                        <span class="label label-primary typeEstadoSpan" id="ticketAsignado">Asignado</span>
                                         <span class="label label-success typeEstadoSpan" id="ticketFinalizado">Finalizado</span>
                                     </div>
                                 </div>

@@ -16,7 +16,11 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mailgun'),
+    'mailgun' => [
+        'domain' => 'smtp.mailgun.org',
+        'secret' => 'your-mailgun-key',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +59,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'pepe@gmail.com', 'name' => 'pepe'],
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +112,7 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+    'pretend' => false
 
 ];

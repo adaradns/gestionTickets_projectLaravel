@@ -62,14 +62,14 @@
            
 
                 <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" id="navRight">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Ingresar</a></li>
                     @else
 
 
-                    <li class="dropdown">
+                    <li class="dropdown" >
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                  {{ Auth::user()->nombre }}
                             </a>

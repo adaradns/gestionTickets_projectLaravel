@@ -15,6 +15,14 @@ class EmpleadoController extends Controller
     	return view('empleado.index-empleado')->with('tickets', $tickets);
     }
 
+
+    public function indexCreado()
+    {
+        $tickets = Ticket::where('id_estado', 1)->paginate();
+        return view('empleado.bandejaEntrada')->with('tickets', $tickets);
+
+    }
+
     public function create()
     {
 
@@ -29,5 +37,11 @@ class EmpleadoController extends Controller
     {
         $ticket = Ticket::find($id);
         return view('empleado.descripcion')->with('ticket', $ticket);
+    }
+
+    public function descripcionAutoasignar($id)
+    {
+        $ticket = Ticket::find($id);
+        return view('empleado.autoasignar')->with('ticket', $ticket);
     }
 }

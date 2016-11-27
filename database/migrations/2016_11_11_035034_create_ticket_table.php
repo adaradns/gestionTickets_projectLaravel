@@ -16,7 +16,7 @@ class CreateTicketTable extends Migration
             
             $table->increments('id');
             $table->integer('id_cliente')->unsigned();
-            $table->integer('id_responsable')->unsigned();
+            $table->integer('id_responsable')->nullable()->unsigned();
             $table->integer('id_problema')->unsigned();
             $table->integer('id_sla')->unsigned();
             $table->integer('id_estado')->unsigned();

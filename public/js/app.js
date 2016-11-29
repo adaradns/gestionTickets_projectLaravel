@@ -243,12 +243,16 @@ $(document).ready(function(){
 		var fechavencimiento = $(this).closest("tr").data("fechavencimiento");
 		var fechacierre = $(this).closest("tr").data("fechacierre");
 
+		var fechacreacion = new Date();
+		var fechacreacion_español = (fechacreacion.getDate() + '/' + (fechacreacion.getMonth() + 1) + '/' +  fechacreacion.getFullYear());
+		var dia = fechacreacion.getDate() + 5;
+		console.log(dia);
 		$("#modalTicket").html("Informacion detallada del ticket: " + titulo);
 		$("#infoTicket").empty();
 		$("#infoTicket").append("<span> Titulo: " + titulo + "</span><br />");
 		$("#infoTicket").append("<span> Cliente: " + cliente + "</span><br />");
 		$("#infoTicket").append("<span> Responsable: " + responsable + "</span><br />");
-		$("#infoTicket").append("<span>Fecha de creacion: " + fechacreacion +"</span><br />");
+		$("#infoTicket").append("<span>Fecha de creacion: " + fechacreacion_español +"</span><br />");
 		$("#infoTicket").append("<span>Fecha de vencimiento: " + fechavencimiento +"</span><br />");
 		$("#infoTicket").append("<span>Fecha de cierre: " + fechacierre +"</span>");
 
@@ -282,6 +286,7 @@ $(document).ready(function(){
 
 		$("#modal-ticket").modal();
 	});
+
 
 	$("#finalizarTicket").click(function(){
 

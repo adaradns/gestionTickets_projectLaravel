@@ -3,14 +3,19 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <!--Listar tickets asignados-->
+                        <!--Ingreso a tickets asignados-->
                         <li>
-                            <a href="{{route('empleado.empleado.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets asignados</a>
+                            <a href="{{route('empleado.empleado.index')}}"><i class="fa fa-ticket fa-fw"></i>Tickets asignados</a>
+                        </li>
+                         <!--Ingreso a bandeja de tickets finalizados-->
+                        <li>
+                            <a href="{{url('empleado/indexFinalizado')}}"><i class="fa fa-list-ul fa-fw"></i>Tickets finalizados</a>
                         </li>
                         <!--Ingresar a la bandeja de entrada del empleado de primera linea-->
                         <li>
                             <a href="{{url('empleado/indexCreado')}}"><i class="fa fa-list-ul fa-fw"></i> bandeja de entrada</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -19,7 +24,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Tickets Asignados</h3>
+                    <h3>Tickets Creados</h3>
                     <hr>
                     <table class="table table-hover table-striped" id="tableTicketsAsignados">
                         <thead class="thead-inverse">

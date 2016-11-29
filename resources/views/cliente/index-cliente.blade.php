@@ -3,16 +3,6 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Buscar">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                        </li>
                         <!--Listar usuarios-->
                         <li>
                             <a href="#"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
@@ -20,18 +10,6 @@
                         <!-- Crear ticket-->
                          <li>
                             <a href="{{ route('cliente.ticket.create')}}"><i class="fa fa-plus-square fa-fw"></i>Crear ticket</a>
-                        </li>
-                        <li>
-                            <a href="sla.html"><i class="fa fa-ticket fa-fw"></i>SLA</a>
-                        </li>
-                        <!--Desplegable tipo de usuario-->
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>  Tipo de usuario<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><input type="checkbox">Empleado</li>
-                                <li><input type="checkbox">Analista</li>
-                                <li><input type="checkbox">Cliente</li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -63,14 +41,16 @@
                                             <tr data-titulo="{{$ticket->titulo}}" data-estado="{{$ticket->id_estado}}" 
                                                     data-sla="{{$ticket->id_sla}}"
                                                     data-cliente="{{$ticket->id_cliente}}"
-                                                    data-responsable="{{$ticket->id_responsable}}">
+                                                    data-responsable="{{$ticket->id_responsable}}"
+                                                    data-fechacreacion="{{$ticket->created_at}}"
+                                                    >
                                                     <td class="hidden-xs">{{ $ticket->id }}</td>
                                                     <td>{{ $ticket->titulo }}</td>
                                                     <td> 
                                                         @if($ticket->id_estado === 1)
                                                                 <p><span class="label label-default">Creado</span></p>
                                                         @elseif($ticket->id_estado === 2)
-                                                                <p><span class="label label-default">Asignado</span></p>
+                                                                <p><span class="label label-primary">Asignado</span></p>
                                                         @elseif($ticket->id_estado === 3)
                                                            <p><span class="label label-success">Finalizado</span></p>
                                                         @endif

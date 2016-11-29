@@ -5,16 +5,6 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Buscar">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                        </li>
                         <li>
                             <a href="{{ route('admin.users.index') }}"><i class="fa fa-ticket fa-fw"></i> Listar usuarios</a>
                         </li>
@@ -24,7 +14,7 @@
                         </li>
                         <!--SLA-->
                         <li>
-                            <a href="sla.html"><i class="fa fa-ticket fa-fw"></i>SLA</a>
+                            <a href="{{url('admin/sla')}}"><i class="fa fa-ticket fa-fw"></i>SLA</a>
                         </li>
                     </ul>
                 </div>
@@ -43,7 +33,16 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-
+                                    <!--Validacion, verifico si hay errores-->
+                                    @if(count($errors) > 0)
+                                        <div class="alert alert-danger" role="alert">
+                                            <ul>
+                                                @foreach($errors->all() as $error)
+                                                    <li>{{$error}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     {!! Form::open(['route' => 'admin.users.store', 'method' => 'POST']) !!}
                                         <div class="form-group">
                                             {!! Form::label('email', 'E-mail') !!}

@@ -12,7 +12,7 @@
                             <a href="{{ route('admin.users.create') }}"><i class="fa fa-plus-square fa-fw"></i>Crear usuario</a>
                         </li>
                         <li>
-                            <a href="sla"><i class="fa fa-ticket fa-fw"></i>SLA</a>
+                            <a href="{{url('admin/sla')}}"><i class="fa fa-ticket fa-fw"></i>SLA</a>
                         </li>
                     </ul>
                 </div>

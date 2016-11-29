@@ -1,20 +1,8 @@
 @include('layouts.app')
-
-
-            <!-- Menu items-->
+        <!-- Menu items-->
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Buscar">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                        </li>
                         <!--Listar tickets-->
                         <li>
                             <a href="{{ route('cliente.ticket.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
@@ -38,50 +26,38 @@
                             <i class="fa fa-ticket fa-fw"></i>Ticket
                         </div>
                         <div class="panel-body">
-
-                           <div><button class="btn btn-primary"><a id="link-historial" href="#">Ver historial</a></button>
-                          <button class="btn btn-primary"><a id="link-encuesta" href="#">Realizar encuesta</a></button></div>
+                            <div class="buttons">
+                                <button class="btn btn-primary">
+                                    <a id="link-historial" href="#">Ver historial</a>
+                                </button>
+                                <button class="btn btn-primary">
+                                    <a  href="{{url('cliente/encuesta')}}">Realizar encuesta</a>
+                                </button>
+                            </div>
                            <div style="display: none;" class="historial">
                            <br />
                                   <table class="table table-bordered table-hover table-striped">
                                             <thead >
                                                 <tr>
                                                     <th>Fecha</th>
-                                                    <th>Motivos</th>
+                                                    <th>Titulo</th>
+                                                    <th>Motivo</th>
                                                     <th>Responsable</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>11/04/2016</td>
-                                                    <td>Cambio de estado: Finalizado</td>
-                                                    <td>Lala</td>
+                                                    <td>{{$ticket->created_at}}</td>
+                                                    <td>{{$ticket->titulo}}</td>
+                                                    <td>
+                                                        @if($ticket->id_problema === 1)
+                                                            <p><span>Consulta</span></p>
+                                                        @elseif($ticket->id_problema === 2)
+                                                            <p><span>Problema</span></p>
+                                                        @endif
+                                                    </td>
+                                                    <td>{{$ticket->id_responsable}}</td>
                                                 </tr>  
-                                                <tr>
-                                                    <td>04/11/1991</td>
-                                                    <td>Nota del empleado</td>
-                                                    <td>lala</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>04/11/1991</td>
-                                                    <td>Nota del cliente</td>
-                                                    <td >Jorge</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>04/11/1991</td>
-                                                    <td>Cambio de estado: Asignado</td>
-                                                    <td >lala</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>04/11/1991</td>
-                                                    <td>Cambio de estado: Escalo</td>
-                                                    <td>Pepe</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>04/11/1991</td>
-                                                    <td>Nota del empleado</td>
-                                                    <td>Pepe</td>
-                                                </tr>                                          
                                             </tbody>
                                         </table>
                            </div>
@@ -91,7 +67,12 @@
                                 <article>
                                     <h2>Ticket: {{$ticket->titulo}}</h2>
                                     <hr>
-                                    <h3>Motivo del ticket</h3>
+                                    <h3>Motivo del ticket:</h3>
+                                    @if($ticket->id_problema === 1)
+                                        <h3>Consulta</h3>
+                                    @elseif($ticket->id_problema === 2)
+                                        <h3>Problema</h3>
+                                    @endif
                                     <p class="descripcion">{{$ticket->descripcion}}</p>
                                 </article>
                                 <div class="chat-panel panel panel-default">

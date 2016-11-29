@@ -11,8 +11,8 @@ class EmpleadoController extends Controller
 {
     public function index()
     {   
-        $tickets = Ticket::orderBy('id', 'ASC')->paginate();
-    	return view('empleado.index-empleado')->with('tickets', $tickets);
+        $tickets = Ticket::where('id_estado', 2)->paginate();
+        return view('empleado.index-empleado')->with('tickets', $tickets);
     }
 
 
@@ -20,6 +20,13 @@ class EmpleadoController extends Controller
     {
         $tickets = Ticket::where('id_estado', 1)->paginate();
         return view('empleado.bandejaEntrada')->with('tickets', $tickets);
+
+    }
+
+    public function indexFinalizado()
+    {
+        $tickets = Ticket::where('id_estado', 3)->paginate();
+        return view('empleado.ticketsFinalizados')->with('tickets', $tickets);
 
     }
 

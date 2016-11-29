@@ -26,7 +26,8 @@ Route::group(['middleware' => ['auth', 'administrador'], 'prefix' => 'admin' ] ,
 Route::group(['middleware' => ['auth', 'administrador'], 'prefix' => 'admin' ] , function(){
 
 	Route::resource('users','UsersController');
-
+	Route::resource('sla','SlaController');
+	//Route::get('/sla', 'SlaController@create');
 	Route::get('/', 'UsersController@index');
 });
 
@@ -34,6 +35,8 @@ Route::group(['middleware' => ['auth', 'cliente'], 'prefix' => 'cliente' ] , fun
 	
 	Route::resource('ticket', 'TicketController');
 	Route::get('/', 'TicketController@index');
+	
+	Route::resource('encuesta','EncuestaController');
 	/*Route::get('/', function(){
 		return view('cliente.index-cliente');
 	});*/
@@ -44,6 +47,7 @@ Route::group(['middleware' => ['auth', 'empleado'], 'prefix' => 'empleado' ] , f
 	Route::resource('empleado', 'EmpleadoController');
 	Route::get('/', 'EmpleadoController@index');
 	Route::get('/indexCreado', 'EmpleadoController@indexCreado');
+	Route::get('/indexFinalizado', 'EmpleadoController@indexFinalizado');
 	Route::get('/descripcionAutoasignar/{id}', 'EmpleadoController@descripcionAutoasignar');
 	Route::get('/autoasignar/{id}', 'TicketController@autoasignarTicket');
 	Route::get('/finalizar/{id}', 'TicketController@finalizarTicket');
@@ -62,7 +66,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('/home', 'HomeController@index');
 });
 
-Route::get('enviar', 'UsersController@sendEmailReminder');
+
 
 Route::group(['prefix' => 'encuesta'], function(){
 

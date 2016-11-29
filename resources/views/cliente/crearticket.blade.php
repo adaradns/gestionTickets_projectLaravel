@@ -6,15 +6,11 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="{{ route('admin.users.index') }}"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
+                            <a href="{{ route('cliente.ticket.index') }}"><i class="fa fa-ticket fa-fw"></i> Listar tickets</a>
                         </li>
                         <!-- Crear ticket-->
                          <li>
-                            <a href="{{ url('admin/users/create') }}"><i class="fa fa-plus-square fa-fw"></i>Crear usuario</a>
-                        </li>
-                        <!--SLA-->
-                        <li>
-                            <a href="sla.html"><i class="fa fa-ticket fa-fw"></i>SLA</a>
+                            <a href="{{ url('cliente/ticket/create') }}"><i class="fa fa-plus-square fa-fw"></i>Crear ticket</a>
                         </li>
                     </ul>
                 </div>
@@ -33,8 +29,17 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-
-                                    {!! Form::open(['route' => 'cliente.ticket.store', 'method' => 'POST']) !!}
+                                    <!--Validacion, verifico si hay errores-->
+                                    @if(count($errors) > 0)
+                                        <div class="alert alert-danger" role="alert">
+                                            <ul>
+                                                @foreach($errors->all() as $error)
+                                                    <li>{{$error}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    {!! Form::open(['route' => 'cliente.ticket.store', 'method' => 'POST', 'files' => true]) !!}
                                         <div class="form-group">
                                             {!! Form::label('titulo', 'Titulo') !!}
                                             {!! Form::text('titulo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese un titulo', 'required'])!!}

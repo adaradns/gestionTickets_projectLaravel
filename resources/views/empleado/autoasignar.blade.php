@@ -7,6 +7,10 @@
                     <li>
                         <a href="{{route('empleado.empleado.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets asignados</a>
                     </li>
+                     <!--Ingreso a bandeja de tickets finalizados-->
+                        <li>
+                            <a href="{{url('empleado/indexFinalizado')}}"><i class="fa fa-list-ul fa-fw"></i>Tickets finalizados</a>
+                        </li>
                     <!--Ingresar a la bandeja de entrada del empleado de primera linea-->
                     <li>
                         <a href="{{url('empleado/indexCreado')}}"><i class="fa fa-list-ul fa-fw"></i> bandeja de entrada</a>
@@ -16,14 +20,9 @@
         </div>
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-8">
-                    
-                    <!-- Panel principal -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading ">
-                            <i class="fa fa-ticket fa-fw"></i>Ticket
-                        </div>
-                        <div class="panel-body">
+                <div class="col-lg-12">
+                            <h3>Autoasignar ticket</h3>
+                            <hr>
                             <input type="hidden" name="" value="{{$ticket->id}}" id="idTicket">
                             <div class="buttons">
                                 <button class="btn btn-grey"><a id="link-historial" href="#">Ver historial</a></button>
@@ -76,8 +75,8 @@
                             <hr>
                             <div class="content">
                                 <article>
-                                    <h2>Titulo</h2>
-                                    <p class="descripcion">Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
+                                    <h2>{{$ticket->titulo}}</h2>
+                                    <p class="descripcion">{{$ticket->descripcion}}</p>
                                 </article>
                                 <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
@@ -195,52 +194,9 @@
                         </div>
                         <!-- /.panel-footer -->
                     </div>
-                            </div>          
-                        </div>      
-                    </div>
+                            </div>
                 </div>
-            <!-- /.panel-body -->
-                <div class="col-lg-4">
-                    
-                    <!-- Panel principal -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading ">
-                            <i class="fa fa-ticket fa-fw"></i>Ticket - Detalles
-                        </div>
-                        <div class="panel-body">
-                            <div class="content-details">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <p><b>ID:</b> 788978</p>
-                                    </div>    
-                                    <div class="col-xs-12">
-                                        <p><b>Prioridad:</b> Baja</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Estado: </b>Creado</p>    
-                                    </div>    
-                                    <div class="col-xs-12">
-                                        <p><b>Fecha de creacion:</b> 20/03/16</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Fecha de vencimiento: </b> 25/03/16</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Fecha de cierre: </b> </p>
-                                        
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Cliente: </b>Jorgee</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Empleado asignado: </b> cacho</p>
-                                    </div>                
-                            </div>          
-                        </div>      
-                    </div>
-                </div>
-                            <!-- /.row -->
-            </div>
+        
                 
         </div>
         <!-- /#page-wrapper -->

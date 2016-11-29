@@ -23,7 +23,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3>Tickets Asignados</h3>
+                    <h3>Tickets Finalizados</h3>
                     <hr>
                     <table class="table table-hover table-striped" id="tableTicketsAsignados">
                         <thead class="thead-inverse">
@@ -42,17 +42,12 @@
                                 data-sla="{{$ticket->id_sla}}"
                                 data-cliente="{{$ticket->id_cliente}}"
                                 data-responsable="{{$ticket->id_responsable}}"
-                                data-fechacreacion="{{$ticket->created_at}}"
+                                data-fechacreacion="{{$ticket->updated_at}}"
                                 data-fechavencimiento="{{$ticket->fecha_vencimiento}}"
                                 data-fechacierre="{{$ticket->fecha_cierre}}">
                                 <td class="hidden-xs">{{ $ticket->id }}</td>
                                 <td>{{ $ticket->titulo }}</td>
-                                <td> 
-                                    @if($ticket->id_estado === 1)
-                                        <p><span class="label label-default">Creado</span></p>
-                                    @elseif($ticket->id_estado === 2)
-                                        <p><span class="label label-primary">Asignado</span></p>
-                                    @elseif($ticket->id_estado === 3)
+                                <td>@if($ticket->id_estado === 3)
                                         <p><span class="label label-success">Finalizado</span></p>
                                     @endif
                                 </td>
@@ -72,7 +67,7 @@
                                     <a href="{{route('empleado.empleado.show', $ticket->id)}}" class="btn btn-warning link-color hidden-xs " data-toggle="tooltip" title="Panel de informacion"><i class="fa fa-ticket" aria-hidden="true"></i> </a>
                                 </td>
                             </tr>
-                            @endforeach 
+                             @endforeach
                         </tbody>
                     </table>
                 </div>

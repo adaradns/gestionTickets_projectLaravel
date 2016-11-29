@@ -10,6 +10,10 @@
                         <li>
                             <a href="{{route('empleado.empleado.index')}}"><i class="fa fa-ticket fa-fw"></i> Listar tickets asignados</a>
                         </li>
+                         <!--Ingreso a bandeja de tickets finalizados-->
+                        <li>
+                            <a href="{{url('empleado/indexFinalizado')}}"><i class="fa fa-list-ul fa-fw"></i>Tickets finalizados</a>
+                        </li>
                         <!--Ingresar a la bandeja de entrada del empleado de primera linea-->
                         <li>
                             <a href="{{url('empleado/indexCreado')}}"><i class="fa fa-list-ul fa-fw"></i> bandeja de entrada</a>
@@ -26,15 +30,23 @@
                 <div class="col-lg-12">
                     
                     <!-- Panel principal -->
-                      
-                            <h3>Ticket asignado</h3>
+                            @if($ticket->id_estado === 2)    
+                                <h3>Ticket Asignado</h3>
+                            @elseif($ticket->id_estado === 3)
+                                <h3>Ticket Finalizado</h3>
+                            @endif
                             <hr>
                             <input type="hidden" name="" value="{{$ticket->id}}" id="idTicket">
                             <div class="buttons">
-                                <button class="btn btn-grey"><a id="link-historial" href="#">Ver historial</a></button>
-                                <button class="btn btn-grey"><a id="redirigirTicket" href="#">Redirigir ticket</a></button>
-                                <button class="btn btn-grey"><a id="finalizarTicket" href="#">Finalizar ticket</a></button>
-                                <button class="btn btn-grey"><a id="encuestaDeSastifaccion" href="#">Ver resultado de encuesta de sastifaccion</a></button>
+                                @if($ticket->id_estado === 2)
+                                    <button class="btn btn-grey"><a id="link-historial" href="#">Ver historial</a></button>
+                                    <button class="btn btn-grey"><a id="redirigirTicket" href="#">Redirigir ticket</a></button>
+                                    <button class="btn btn-grey"><a id="finalizarTicket" href="#">Finalizar ticket</a></button>
+                                    <button class="btn btn-grey"><a id="encuestaDeSastifaccion" href="#">Ver resultado de encuesta de sastifaccion</a></button>
+                                @elseif($ticket->id_estado === 3)
+                                     <button class="btn btn-grey"><a id="link-historial" href="#">Ver historial</a></button>
+                                     <button class="btn btn-grey"><a id="encuestaDeSastifaccion" href="#">Ver resultado de encuesta de sastifaccion</a></button>
+                                @endif
                             </div>
                             <div style="display: none;" class="historial">
                                   <table class="table table-bordered table-hover table-striped">

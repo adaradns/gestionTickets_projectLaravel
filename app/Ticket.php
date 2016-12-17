@@ -27,15 +27,20 @@ class Ticket extends Model
     ];
 
     //Un ticket es creado unicamente por un usuario One To Many
-    public function user()
+    public function cliente()
     {
-    	return $this->belongsTo('App\Usuario');
+    	return $this->belongsTo('App\User', 'id_cliente');
+    }
+
+    public function responsable()
+    {
+        return $this->belongsTo('App\User', 'id_responsable');
     }
 
     //Relacion One To Many un ticket en varios historiales
     public function historial()
     {
-    	return $this->hasMany('App\Historial');
+    	return $this->belongsTo('App\Historial', 'id_ticket');
     }
 
 
@@ -60,7 +65,7 @@ class Ticket extends Model
     //One To One
     public function sla()
     {
-        return $this->belongsTo('App\Sla');
+        return $this->belongsTo('App\Sla', 'id_sla');
     }
 
     public function tipo_problema()

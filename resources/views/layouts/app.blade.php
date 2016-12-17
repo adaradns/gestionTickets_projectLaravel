@@ -59,7 +59,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
-           
+                
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right" id="navRight">
@@ -68,6 +68,7 @@
                         <li><a href="{{ url('/login') }}">Ingresar</a></li>
                     @else
 
+           
 
                     <li class="dropdown" >
                         <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -94,7 +95,9 @@
     
     <!-- jQuery -->
 
-    <script src="{{asset('js/jquery.js')}}"></script>
+    <script src="
+
+    "></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 

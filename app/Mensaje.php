@@ -9,7 +9,7 @@ class Mensaje extends Model
 	protected $table = "mensaje";
 
     protected $fillable = [
-        'id','id_ticket','id_usuario','fecha_creacion', 'descripcion',
+        'id','id_ticket','id_usuario', 'descripcion',
     ];
 
     //One To Many 

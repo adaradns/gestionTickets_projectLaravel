@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Http\Requests;
 use App\Ticket;
+use App\User;
+use App\Mensaje;
+use App\Encuesta;
+
 
 class EmpleadoController extends Controller
 {
     public function index()
-    {   
-        $tickets = Ticket::where('id_estado', 2)->paginate();
+    {
+        $user = Auth::user();
+
+        $tickets = Ticket::where('id_estado', 2)->where('id_responsable', $user->id)->paginate();
         return view('empleado.index-empleado')->with('tickets', $tickets);
     }
 
@@ -25,7 +32,9 @@ class EmpleadoController extends Controller
 
     public function indexFinalizado()
     {
-        $tickets = Ticket::where('id_estado', 3)->paginate();
+        $user = Auth::user();
+
+        $tickets = Ticket::where('id_estado', 3)->where('id_responsable', $user->id)->paginate();
         return view('empleado.ticketsFinalizados')->with('tickets', $tickets);
 
     }
@@ -42,13 +51,23 @@ class EmpleadoController extends Controller
 
      public function show($id)
     {
+        $mensajes = Mensaje::where('id_ticket', '=', $id)->get();
+        $encontrado = Encuesta::where('id_ticket', '=', $id)->count();
+        $encuesta = Encuesta::where('id_ticket', $id)->first();
+
         $ticket = Ticket::find($id);
-        return view('empleado.descripcion')->with('ticket', $ticket);
+        $ticket->cliente;
+        $ticket->responsable;
+        return view('empleado.descripcion', compact('ticket', 'encontrado', 'mensajes', 'encuesta'));
     }
 
     public function descripcionAutoasignar($id)
     {
+        $mensajes = Mensaje::where('id_ticket', '=', $id)->get();
+        
         $ticket = Ticket::find($id);
-        return view('empleado.autoasignar')->with('ticket', $ticket);
+        $ticket->cliente;
+        $ticket->responsable;
+        return view('empleado.autoasignar', compact('ticket', 'mensajes'));
     }
 }

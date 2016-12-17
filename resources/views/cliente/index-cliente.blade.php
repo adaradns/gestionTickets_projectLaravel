@@ -25,7 +25,7 @@
 
                             @include('flash::message')
                                 
-
+                                
                                     <table class="table table-hover table-striped" id="myTable">
                                             <thead class="thead-inverse">
                                                 <tr>
@@ -40,9 +40,11 @@
                                         @foreach($tickets as $ticket)
                                             <tr data-titulo="{{$ticket->titulo}}" data-estado="{{$ticket->id_estado}}" 
                                                     data-sla="{{$ticket->id_sla}}"
-                                                    data-cliente="{{$ticket->id_cliente}}"
-                                                    data-responsable="{{$ticket->id_responsable}}"
+                                                    data-cliente="{{$ticket->cliente->nombre}}"
+                                                    data-responsable=@if($ticket->responsable)"{{$ticket->responsable->nombre}}" @else "" @endif
                                                     data-fechacreacion="{{$ticket->created_at}}"
+                                                    data-fechavencimiento="{{$ticket->fecha_vencimiento}}"
+                                                    data-fechacierre="{{$ticket->fecha_cierre}}"
                                                     >
                                                     <td class="hidden-xs">{{ $ticket->id }}</td>
                                                     <td>{{ $ticket->titulo }}</td>
@@ -56,11 +58,11 @@
                                                         @endif
                                                     </td>
                                                     <td> 
-                                                        @if($ticket->id_sla === 1)
+                                                        @if($ticket->sla->criticidad === 'baja')
                                                             <p><span class="label label-success">Baja</span></p>
-                                                        @elseif($ticket->id_sla === 2)
+                                                        @elseif($ticket->sla->criticidad === 'media')
                                                             <p><span class="label label-warning">Media</span></p>
-                                                        @elseif($ticket->id_sla === 3)
+                                                        @elseif($ticket->sla->criticidad === 'alta')
                                                             <p><span class="label label-danger">Alta</span></p>
                                                         @endif
                                                     </td>

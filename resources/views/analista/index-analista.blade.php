@@ -1,4 +1,11 @@
 @include('layouts.app')
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    @include('footer')
 
     <div id="wrapper">
 
@@ -45,5 +52,7 @@
 
     <!--Libreria para graficos de torta-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!--Importando graficos de torta-->
     <script type="text/javascript" src="{{ asset('js/graficos.js') }}"></script>
+</body>
+</html>
+  

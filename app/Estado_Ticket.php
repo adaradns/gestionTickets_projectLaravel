@@ -16,6 +16,6 @@ class Estado_Ticket extends Model
     //One To One
     public function ticket()
     {
-    	return $this->belongsTo('App\Ticket');
+    	return $this->belongsTo('App\Ticket', 'id_estado');
     }
 }

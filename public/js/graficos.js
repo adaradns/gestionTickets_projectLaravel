@@ -1,18 +1,27 @@
+var creado = 0;
+var asignado = 0;
+var finalizado = 0;
+
+for (var i = 0; i < tickets.length; i ++) {
+  if (tickets[i].id_estado == 1) {creado = creado + 1;}
+  else if(tickets[i].id_estado == 2) {asignado = asignado + 1;}
+  else {finalizado = finalizado + 1;}
+}
 google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
           ['Tipo de ticket', '%'],
-          ['Creado',     11],
-          ['Asignado',      2],
-          ['Finalizado',  2]
+          ['Creado',     creado],
+          ['Asignado',      asignado],
+          ['Finalizado',  finalizado]
         ]);
 
         var data1 = google.visualization.arrayToDataTable([
           ['Tipo de ticket', '%'],
-          ['Finalizado',     13],
-          ['No finalizado',      12]
+          ['Finalizado',     finalizado],
+          ['No finalizado',      creado + asignado]
         ]);
 
         var options = {

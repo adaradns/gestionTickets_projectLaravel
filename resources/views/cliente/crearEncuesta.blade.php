@@ -36,6 +36,7 @@
                                                 ], 
                                                     null,  ['class' => 'form-control' ])
                                             !!}
+
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('pregunta_2', '¿Como calificaria al empleado? Siendo 10 Excelente y 1 Muy malo ') !!}
@@ -73,6 +74,9 @@
                                         </div>
                                         <div class="form-group pull-right">
                                             {!! Form::submit('Enviar', ['class' => 'btn btn-primary ']) !!}
+                                        </div>
+                                        <div>
+                                        {!! Form::hidden('id_ticket', $id_ticket) !!}
                                         </div>
                                     {!! Form::close() !!}    
                                 </div>

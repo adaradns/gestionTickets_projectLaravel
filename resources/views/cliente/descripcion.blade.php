@@ -19,20 +19,22 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    
-                    <!-- Panel principal -->
-                    <div class="panel panel-primary">
-                        <div class="panel-heading ">
-                            <i class="fa fa-ticket fa-fw"></i>Ticket
-                        </div>
-                        <div class="panel-body">
+                            <h2>Ticket: {{$ticket->titulo}}</h2>
+                                    <hr>
                             <div class="buttons">
                                 <button class="btn btn-primary">
-                                    <a id="link-historial" href="#">Ver historial</a>
+                                    <a href="{{route('empleado.historial.show', $ticket->id)}}"> <i class="fa fa-history fa-fw"></i>Ver historial</a>
                                 </button>
-                                <button class="btn btn-primary">
-                                    <a  href="{{url('cliente/encuesta')}}">Realizar encuesta</a>
-                                </button>
+                                @if($ticket->archivo != NULL)
+                                    <button class="btn btn-grey"><a id="imagenDelProblema" href="#">Ver imagen del problema</a></button>
+                                @endif
+                                @if($ticket->id_estado === 3 and $encontrado === 0)
+                                    <button class="btn btn-primary">
+                                        <a  href="{{url('cliente/encuesta' , $ticket->id)}}"><i class="fa fa-question-circle" aria-hidden="true"></i> Realizar encuesta</a>
+                                    </button>
+                                @elseif($ticket->id_estado === 3 and $encontrado === 1)
+                                    <button class="btn btn-grey"><a id="encuestaDeSastifaccion" href="#">Ver resultado de encuesta de sastifaccion</a></button>
+                                @endif
                             </div>
                            <div style="display: none;" class="historial">
                            <br />
@@ -50,9 +52,9 @@
                                                     <td>{{$ticket->created_at}}</td>
                                                     <td>{{$ticket->titulo}}</td>
                                                     <td>
-                                                        @if($ticket->id_problema === 1)
+                                                        @if($ticket->id_problema == 1)
                                                             <p><span>Consulta</span></p>
-                                                        @elseif($ticket->id_problema === 2)
+                                                        @elseif($ticket->id_problema == 2)
                                                             <p><span>Problema</span></p>
                                                         @endif
                                                     </td>
@@ -65,15 +67,14 @@
                             <hr>
                             <div class="content">
                                 <article>
-                                    <h2>Ticket: {{$ticket->titulo}}</h2>
-                                    <hr>
-                                    <h3>Motivo del ticket:</h3>
+                                    
+                                    <h3>Motivo del ticket:
                                     @if($ticket->id_problema === 1)
-                                        <h3>Consulta</h3>
+                                        Consulta</h3>
                                     @elseif($ticket->id_problema === 2)
-                                        <h3>Problema</h3>
+                                        Problema</h3>
                                     @endif
-                                    <p class="descripcion">{{$ticket->descripcion}}</p>
+                                    <p class="descripcion">Descripcion: {{$ticket->descripcion}}</p>
                                 </article>
                                 <div class="chat-panel panel panel-default">
                         <div class="panel-heading">
@@ -115,186 +116,111 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <ul class="chat">
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                                            </small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>s
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
+                                @foreach($mensajes as $mensaje)
+                                    @if($mensaje->id_usuario == $ticket->id_cliente)
+                                        <li class="left clearfix">
+                                            <span class="chat-img pull-left">
+                                                <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                            </span>
+                                            <div class="chat-body clearfix">
+                                                <div class="header">
+                                                    <strong class="primary-font">{{$ticket->cliente->nombre}}</strong>
+                                                    <small class="pull-right text-muted">
+                                                        <i class="fa fa-clock-o fa-fw"></i> {{$mensaje->created_at}}
+                                                    </small>
+                                                </div>
+                                                <p>
+                                                    {{$mensaje->descripcion}}
+                                                </p>
+                                            </div>
+                                        </li>
+                                    @else
+                                        @if($ticket->id_responsable != NULL)
+                                            <li class="right clearfix">
+                                                <span class="chat-img pull-right">
+                                                    <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                                </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="header">
+                                                        <small class=" text-muted">
+                                                            <i class="fa fa-clock-o fa-fw"></i>{{$mensaje->created_at}}</small>
+                                                        <strong class="pull-right primary-font">{{$ticket->responsable->nombre}}</strong>
+                                                    </div>
+                                                    <p>
+                                                        {{$mensaje->descripcion}}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        @endif
+                                    @endif
+                                @endforeach
                             </ul>
                         </div>
                         <!-- /.panel-body -->
                         <div class="panel-footer">
-                            <div class="input-group">
-                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
-                                </span>
-                            </div>
+                            @if($ticket->id_estado != 3)
+                                {!! Form::open(['route' => 'cliente.mensajes.store', 'method' => 'POST']) !!}
+                                    <div class="form-group">
+                                        {!! Form::text('descripcion', null, ['class' => 'form-control input-sm', 'placeholder' => 'Ingrese su mensaje aqui...', 'required']) !!}
+
+                                        <span class="input-group-btn">
+                                            {!! Form::submit('Send', ['class' => 'btn btn-warning btn-sm']) !!}
+                                        </span>
+                                    </div>
+                                    {!! Form::hidden('ticket_id', $ticket->id) !!}
+                                    {!! Form::hidden('id_usuario', $ticket->id_cliente) !!}
+                                {!! Form::close() !!}
+                            @endif
                         </div>
                         <!-- /.panel-footer -->
                     </div>
-                            </div>          
-                        </div>      
-                    </div>
+                            </div>        
                 </div>
-            <!-- /.panel-body -->
-               <!--
-                <div class="col-lg-4">
-                    
-                  Panel principal 
-                    <div class="panel panel-primary">
-                        <div class="panel-heading ">
-                            <i class="fa fa-ticket fa-fw"></i>Tickets - Detalles
-                        </div>
-                        <div class="panel-body">
-                            <div class="content-details">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <p><b>ID:</b> 788978</p>
-                                    </div>    
-                                    <div class="col-xs-12">
-                                        <p><b>Prioridad:</b> Baja</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Estado: </b>Finalizado</p>    
-                                    </div>    
-                                    <div class="col-xs-12">
-                                        <p><b>Fecha de creacion:</b> 20/03/16</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Fecha de vencimiento: </b> 25/03/16</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Fecha de cierre: </b> 28/03/16</p>
-                                        
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Cliente: </b>Jorgee</p>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <p><b>Empleado asignado: </b>Pepe</p>
-                                    </div>                
-                            </div>          
-                        </div>      
-                    </div>
-                </div>  
-            </div>-->
-                
         </div>
         <!-- /#page-wrapper -->
         
                 
     </div>
     <!-- /#wrapper -->
-
-    <!--MODALS-->
-    <div class="modal fade" id="modal-encuesta" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+    <!--MODAL DE ENCUESTA DE SASTIFACCION-->
+    <div class="modal fade" id="modal-resultadoEncuesta" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title" id="gridSystemModalLabel">Encuesta de sactifaccion</h4>
+                <h4 class="modal-title" id="gridSystemModalLabel">Resultado de la encuesta de sactifaccion</h4>
               </div>
               <div class="modal-body">
                    <form>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <label for="">¿Le sirvió la respuesta?</label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="optradio">Si
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="optradio">No
-                                    </label>
+                                    <label for="respuesta1">¿Le sirvió la respuesta?</label>
+                                    <p id="respuesta1">
+                                    @if($encontrado === 1)
+                                        @if($encuesta->pregunta_1 == 1)
+                                            Si
+                                        @else
+                                            No
+                                        @endif
+                                    @endif
+                                    </p>
                                 </div>
                                 <div class="col-md-12" style="display: inline">
-                                    <label for="">¿Como calificaria al empleado?
-                                        <select id="selMotivo" name="selMotivo" class="form-control" required>
-                                            <option value="1">1 Muy malo</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10 Perfecto</option>
-                                       </select>
+                                    <label for="respuesta2">¿Como calificaria al empleado?
+                                        <p id="respuesta2">
+                                        @if($encontrado === 1)
+                                            {{$encuesta->pregunta_2}}
+                                        @endif
+                                        </p>
                                    </label>
                                 </div>
                                 <div class="col-md-12" style="display: inline">
-                                    <label for="">¿Como calificaria su respuesta?
-                                        <select id="selMotivo" name="selMotivo" class="form-control" required>
-                                            <option value="1">1 Muy malo</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10 Perfecto</option>
-                                       </select>
+                                    <label for="respuesta3">¿Como calificaria su respuesta?
+                                        <p id="respuesta3">
+                                        @if($encontrado === 1)
+                                            {{$encuesta->pregunta_3}}
+                                        @endif
+                                        </p>
                                    </label>
                                 </div>
                             </div>
@@ -308,3 +234,27 @@
             </div><!-- /.modal-content -->
           </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
+    <!--MODAL VER IMAGEN DEL PROBLEMA-->
+    <div class="modal fade" id="modal-imagenDelProblema" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="gridSystemModalLabel">Imagen del problema</h4>
+              </div>
+              <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if($ticket->archivo != NULL)
+                                <img src="{{ url('/archivo/' . $ticket->nombre_archivo) }}" class="img-responsive">
+                            @endif
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+   
+    <!--/.MODAL VER IMAGEN DEL PROBLEMA-->

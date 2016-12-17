@@ -186,6 +186,9 @@ $(document).ready(function(){
 	$("#encuestaDeSastifaccion").click(function(){
 		$("#modal-resultadoEncuesta").modal();
 	});
+	$("#imagenDelProblema").click(function(){
+		$("#modal-imagenDelProblema").modal();
+	});
 	//empleado 2°: modal ticket seguido descipcion-ticketNoPropio-empleado2.html
 	$("#seguirTicket").click(function(){
 		$("#modal-seguirTicket").modal();
@@ -197,6 +200,7 @@ $(document).ready(function(){
 
 	/*Administrador*/
 	//Ver informacion detallada de usuario
+	
 	$(".btnVerMas").click(function(){
 		var nombre = $(this).closest("tr").data("nombre");
 		var apellido = $(this).closest("tr").data("apellido");
@@ -231,6 +235,43 @@ $(document).ready(function(){
 		$("#modal-users").modal();
 	});
 
+	/*$(".btnVerMas").click(function(){
+		debugger;
+		$.ajax({
+			url: 'http://www.cvpba.org/sf2_prod/web/directorio/consultorio-veterinario/',
+			type:'GET',
+			async: false,
+			success:function (data) {
+				var restHtml = data;
+				var divs = $(restHtml).find(".directory_item");
+				var veterinarias=[];
+				for(var i=0;i<divs.length;i++){
+					var veterinaria={};
+					var nombre = $(divs[i]).find("h3");
+					veterinaria.nombre=nombre[0].innerText;
+					var especies = $(divs[i]).find(".stablishment_activities > li");
+					veterinaria.especies = [];
+
+					var datosPersonales = $(divs[i]).find(".stablishment_principal_info > thead > tr");
+					datosPersonales[1][0];
+
+					for(var ii=0; ii<especies.length; ii++)
+					{
+						veterinaria.especies.push(especies[ii].innerText);
+					}
+
+					veterinarias.push(veterinaria);
+				}
+				console.log(veterinarias);
+				
+			},
+		    error: function( xhr,err ) {
+		        
+		    }
+		});
+
+	});*/
+
 	/*Cliente*/
 	//Ver informacion detallada de ticket
 	$(".btnVerMas").click(function(){
@@ -243,18 +284,27 @@ $(document).ready(function(){
 		var fechavencimiento = $(this).closest("tr").data("fechavencimiento");
 		var fechacierre = $(this).closest("tr").data("fechacierre");
 
-		var fechacreacion = new Date();
-		var fechacreacion_español = (fechacreacion.getDate() + '/' + (fechacreacion.getMonth() + 1) + '/' +  fechacreacion.getFullYear());
-		var dia = fechacreacion.getDate() + 5;
-		console.log(dia);
+		fechacreacion = new Date(fechacreacion);
+		var fechacreacion_esp = (fechacreacion.getDate() + '/' + (fechacreacion.getMonth() + 1) + '/' +  fechacreacion.getFullYear());
+		
+		fechavencimiento = new Date(fechavencimiento);
+		var fechavencimiento_esp = (fechavencimiento.getDate() + '/' + (fechavencimiento.getMonth() + 1) + '/' +  fechavencimiento.getFullYear());
+		var fechacierre_esp="";
+		if(fechacierre){
+			fechacierre = new Date(fechacierre);
+			var fechacierre_esp = ((fechacierre.getDate() +1) + '/' + (fechacierre.getMonth() + 1) + '/' +  fechacierre.getFullYear());
+		}
+		
+
+
 		$("#modalTicket").html("Informacion detallada del ticket: " + titulo);
 		$("#infoTicket").empty();
 		$("#infoTicket").append("<span> Titulo: " + titulo + "</span><br />");
 		$("#infoTicket").append("<span> Cliente: " + cliente + "</span><br />");
 		$("#infoTicket").append("<span> Responsable: " + responsable + "</span><br />");
-		$("#infoTicket").append("<span>Fecha de creacion: " + fechacreacion_español +"</span><br />");
-		$("#infoTicket").append("<span>Fecha de vencimiento: " + fechavencimiento +"</span><br />");
-		$("#infoTicket").append("<span>Fecha de cierre: " + fechacierre +"</span>");
+		$("#infoTicket").append("<span>Fecha de creacion: " + fechacreacion_esp +"</span><br />");
+		$("#infoTicket").append("<span>Fecha de vencimiento: " + fechavencimiento_esp +"</span><br />");
+		$("#infoTicket").append("<span>Fecha de cierre: " + fechacierre_esp +"</span>");
 
 		$(".typeSlaSpan").hide();
 
@@ -288,16 +338,22 @@ $(document).ready(function(){
 	});
 
 
-	$("#finalizarTicket").click(function(){
-
+	$("#bandejaDeEntrada").click(function(){
 		var idTicket = $("#idTicket").val();
-		debugger;
+		var url = window.location.protocol + '//' + window.location.host+"/empleado/bandejaEntrada/" + idTicket;
+		$.ajax({
+            type: "GET",
+            url: url
+		});
+	});	
+
+	$("#finalizarTicket").click(function(){
+		var idTicket = $("#idTicket").val();
 		var url = window.location.protocol + '//' + window.location.host+"/empleado/finalizar/" + idTicket;
 		$.ajax({
             type: "GET",
             url: url,
             success: function(response) {
-            	debugger;
                $("#modal-finalizarTicket").modal();
                 	
             }
@@ -307,16 +363,14 @@ $(document).ready(function(){
 		$("#autoasignar").click(function(){
 
 		var idTicket = $("#idTicket").val();
-		debugger;
 		var url = window.location.protocol + '//' + window.location.host+"/empleado/autoasignar/" + idTicket;
 		$.ajax({
             type: "GET",
             url: url,
             success: function(response) {
-            	debugger;
                $("#modal-ticketAsignado").modal();
-                	
             }
+
 		});	
 
 	});

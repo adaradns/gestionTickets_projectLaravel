@@ -17,13 +17,13 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Historial</h1>
+                    <h1 class="page-header">{{$historial->fecha}}</h1>
                 </div>
             </div>
             <!-- fin row -->
             <div class="row">
                 <div class="col-lg-12">
-                    <h4>Ticket</h4>
+                    <h4></h4>
                     <table class="table table-bordered table-hover table-striped">
                         <thead >
                             <tr>
@@ -34,14 +34,19 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($historial as $row)
                             <tr>
-                                <td>a</td>
-                                <td>b</td>
+                                <td>$row->id</td>
+                                <td>$row->fecha</td>
                                 <td>c</td>
                                 <td>d</td>
-                            </tr> 
+                            </tr>
+                            @endforeach 
                         </tbody>
-                    </table>  	
+                    </table>
+                    <div class="text-center">
+                        {!! $historial->render() !!}
+                    </div>  	
 				</div>
             </div>
             <!-- /.col-lg-12 -->

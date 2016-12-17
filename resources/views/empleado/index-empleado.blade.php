@@ -9,7 +9,7 @@
                         </li>
                          <!--Ingreso a bandeja de tickets finalizados-->
                         <li>
-                            <a href="{{url('empleado/indexFinalizado')}}"><i class="fa fa-list-ul fa-fw"></i>Tickets finalizados</a>
+                            <a href="{{url('empleado/indexFinalizado')}}"><i class="fa fa-check" aria-hidden="true"></i> Tickets finalizados</a>
                         </li>
                         <!--Ingresar a la bandeja de entrada del empleado de primera linea-->
                         <li>
@@ -40,8 +40,8 @@
                             <tr data-titulo="{{$ticket->titulo}}" 
                                 data-estado="{{$ticket->  id_estado}}" 
                                 data-sla="{{$ticket->id_sla}}"
-                                data-cliente="{{$ticket->id_cliente}}"
-                                data-responsable="{{$ticket->id_responsable}}"
+                                data-cliente="{{$ticket->cliente->nombre}}"
+                                data-responsable=@if($ticket->responsable)"{{$ticket->responsable->nombre}}" @else "" @endif
                                 data-fechacreacion="{{$ticket->created_at}}"
                                 data-fechavencimiento="{{$ticket->fecha_vencimiento}}"
                                 data-fechacierre="{{$ticket->fecha_cierre}}">
@@ -57,11 +57,11 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if($ticket->id_sla === 1)
+                                    @if($ticket->sla->criticidad === 'baja')
                                         <p><span class="label label-success">Baja</span></p>
-                                    @elseif($ticket->id_sla === 2)
+                                    @elseif($ticket->sla->criticidad === 'media')
                                         <p><span class="label label-warning">Media</span></p>
-                                    @elseif($ticket->id_sla === 3)
+                                    @elseif($ticket->sla->criticidad === 'alta')
                                         <p><span class="label label-danger">Alta</span></p>
                                     @endif
                                 </td>

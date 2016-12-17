@@ -42,7 +42,7 @@
                                     {!! Form::open(['route' => 'cliente.ticket.store', 'method' => 'POST', 'files' => true]) !!}
                                         <div class="form-group">
                                             {!! Form::label('titulo', 'Titulo') !!}
-                                            {!! Form::text('titulo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese un titulo', 'required'])!!}
+                                            {!! Form::text('titulo', null, ['class' => 'form-control', 'placeholder' => 'Ingrese un titulo'])!!}
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('descripcion', 'Descripcion') !!}
@@ -54,7 +54,7 @@
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('id_problema', 'Tipo de problema') !!}
-                                            {!! Form::select('id_problema', [ '1' => 'Problema', '2' => 'Consulta'], null,  ['class' => 'form-control' ])!!}
+                                            {!! Form::select('id_problema', [ '1' => 'Consulta', '2' => 'Problema'], null,  ['class' => 'form-control' ])!!}
                                         </div>
                                         <div class="form-group">
                                             {!! Form::label('archivo', 'Imagen') !!}

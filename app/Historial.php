@@ -23,7 +23,7 @@ class Historial extends Model
     //Relacion One To Many
     public function user()
     {
-    	return $this->belongsTo('App\Usuario');
+    	return $this->belongsTo('App\Usuario', 'id_usuario');
     }
 
     //Many To Many

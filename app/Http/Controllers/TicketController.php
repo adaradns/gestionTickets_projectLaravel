@@ -9,9 +9,15 @@ use Auth;
 use App\Http\Requests;
 use App\Ticket;
 use App\User;
+use App\Mensaje;
 
+
+use DB;
 use App\Historial;
 use App\Encuesta;
+use App\Sla;
+use DateTime;
+use DateInterval;
 use App\Http\Requests\TicketRequest;
 use Laracasts\Flash\Flash;
 
@@ -19,9 +25,12 @@ use Laracasts\Flash\Flash;
 class TicketController extends Controller
 {
      public function index()
-    {   
-        $tickets = Ticket::orderBy('id', 'ASC')->paginate();
-    	return view('cliente.index-cliente')->with('tickets', $tickets);
+    {
+        //$tickets = Ticket::orderBy('id', 'ASC')->paginate();
+        $tickets = Ticket::with(['cliente','responsable'])->get();
+        return view('cliente.index-cliente', compact('tickets'));
+        //
+    	//return view('cliente.index-cliente')->with('tickets', $tickets);
     }
 
 
@@ -40,13 +49,25 @@ class TicketController extends Controller
         $ticket->id_cliente = $user->id;
         $ticket->id_estado = 1;
         
+        
         //Manipulacion de archivos
         $file = $request->file('archivo');
-        $nameFile = 'gestiondeTickets_' | time().'.'. $file->getClientOriginalName();
+        if($file != null){
+            $ticket->nombre_archivo = $file->getClientOriginalName();
+        }    
+        $ticket->archivo = $file;
+
+
+        $sla = Sla::find($ticket->id_sla);
+        $fecha_vencimiento = 'P'.$sla->dias.'D';
+        $dias= new DateInterval($fecha_vencimiento);
+        $dateAdded = new DateTime($ticket->created_at);
+        $dateAdded->add($dias);
+        $ticket->fecha_vencimiento = $dateAdded;
         
+
         $ticket->save();
 
-        //Capturo los datos del ticket y los almaceno en historial
         $historial = new Historial();
         $historial->id_ticket = $ticket->id;
         $historial->id_usuario = $user->id;
@@ -66,14 +87,21 @@ class TicketController extends Controller
     {
         $ticket = Ticket::find($id);
         $ticket->id_estado = 3;
+        $ticket->fecha_cierre = new DateTime(); 
         $ticket->save();
         return response()->json([
             'ticket' => $ticket
         ]);
 
-        $historial = new Historial();
-        $historial->id_ticket = $ticket->id_estado;
-        $historial->save();
+        
+    }
+
+    public function redirigirBandejaEntrada($id)
+    {
+        $ticket = Ticket::find($id);
+        $ticket->id_estado = 1; 
+        $ticket->save();
+        return redirect()->route('cliente.ticket.index');
     }
 
     public function autoasignarTicket($id)
@@ -83,18 +111,26 @@ class TicketController extends Controller
         $user = Auth::user();
         $ticket->id_responsable = $user->id;
         $ticket->save();
-        return response()->json([
+        /*return response()->json([
             'ticket' => $ticket
-        ]);
+        ]);*/
 
-        $historial = new Historial();
-        $historial->id_ticket = $ticket->id_estado;
-        $historial->save();
     }
 
     public function show($id)
     {
+        $mensajes = Mensaje::where('id_ticket', '=', $id)->get();
+        $encontrado = Encuesta::where('id_ticket', '=', $id)->count();
+        $encuesta = Encuesta::where('id_ticket', $id)->first();
+
         $ticket = Ticket::find($id);
-        return view('cliente.descripcion')->with('ticket', $ticket);
+        $ticket->cliente;
+        $ticket->responsable;
+        return view('cliente.descripcion', compact('ticket', 'encontrado', 'mensajes', 'encuesta'));
+    }
+
+    public function verHistorial($id)
+    {
+        
     }
 }

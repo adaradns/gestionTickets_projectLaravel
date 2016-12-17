@@ -26,8 +26,7 @@ class TicketRequest extends Request
         return [
             'titulo' => 'min:5|max:100|required',
             'descripcion' => 'min:20|max:350|required',
-            'achivo' => 'image|mimes:jpg,png'
-
+            'archivo' => 'image'
         ];
     }
 }
